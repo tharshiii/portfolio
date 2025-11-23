@@ -1,71 +1,104 @@
+/* src/assets/css/navbar.css */
+
+/* Structure principale : L'îlot flottant */
 .navbar {
     position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+
+    /* Dimensions et forme */
+    width: 90%;
+    max-width: 900px; 
+    height: 56px;
+    padding: 0 8px;
+    
+    /* Disposition en 3 parties : Gauche - Centre - Droite */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    width: auto;
-    bottom: 30px;
-    left: 50%;
-    padding: 10px 20px;
-    transform: translateX(-50%);
+
+    /* Effet Verre (Glassmorphism) Sombre */
+    background: rgba(10, 10, 10, 0.6); 
+    backdrop-filter: blur(12px);       
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 100px; 
+    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
 }
 
-.backdrop-blur {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border-radius: 99px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* --- GAUCHE : LOGO --- */
+.nav-left {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.navbar a {
-    color: var(--monochrome);
-    font-family: "Sora";
-    font-weight: 500;
-    text-align: center;
+.logo-text {
+    color: #ffffff;
+    font-family: sans-serif; /* Ou "Sora" si tu l'as importée */
+    font-weight: 700;
+    font-size: 18px;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 15px;
+    letter-spacing: -0.5px;
+}
+
+/* --- CENTRE : LIENS --- */
+.nav-center {
+    display: flex;
+    gap: 4px;
+    /* Sur mobile, on pourrait vouloir cacher ça, mais gardons simple */
+}
+
+.nav-link {
+    color: #a0a0a0; /* Gris clair par défaut */
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 8px 16px;
     border-radius: 99px;
-    transition: 0.2s ease-out;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15); /* Plus clair pour l'actif */
 }
 
 .titlesbtn {
-    margin-left: 8px;
-    font-size: 16px;
+    /* Style optionnel pour le texte des boutons */
 }
 
-.icon {
-    color: var(--monochrome);;
-    display: flex;
-    border-radius: 999px;
-    background-color: transparent;
-    border: none;
-    transition: 0.2s ease-out;
+/* --- DROITE : BOUTON --- */
+.nav-right {
+    padding-right: 6px;
 }
 
-.navbar a:hover {
-    background: rgba(255, 255, 255, 0.24);
+.cta-button {
+    background: #ffffff;
+    color: #000000;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 99px;
-    box-shadow: 0 0px 20px rgba(70, 70, 70, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.cta-button:hover {
     transform: scale(1.05);
 }
-
-.navbar a.active[data-section="home"] .icon {
-    color: var(--navicons-home);
-}
-
-.navbar a.active[data-section="works"] .icon {
-    color: var(--navicons-work);
-}
-
-.navbar a.active[data-section="skills"] .icon {
-    color: var(--navicons-skills);
-}
-
