@@ -1,0 +1,129 @@
+/* Home styling */
+
+h1, p {
+    text-align: center;
+}
+
+.container {
+    max-width: 50%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero_head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    /* apparition depuis le bas, terminaison un peu vers le haut */
+    transform: translateY(24px);
+    opacity: 0;
+    animation: slideFadeUp 700ms cubic-bezier(.22,.9,.32,1) forwards;
+}
+
+.anim_p {
+    /* apparition depuis le bas, terminaison un peu vers le haut */
+    transform: translateY(24px);
+    opacity: 0;
+    animation: slideFadeUp 700ms cubic-bezier(.22,.9,.32,1) forwards;
+    animation-delay: 300ms;
+}
+
+@keyframes slideFadeUp {
+    from {
+        transform: translateY(24px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
+
+/* Respecter la préférence de réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+    .hero_head {
+        transform: none;
+        opacity: 1;
+        animation: none;
+    }
+}
+
+/* Resize mini earth*/
+.globe_emoji {
+	width: 42px;
+	height: 42px;
+}
+
+.button {
+    text-decoration: none;
+    font-family: "Sora";
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: -1.5px;
+    margin: 8px;
+}
+
+.links{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+}
+
+.button {
+    color: var(--monochrome);
+    transition: all .5s;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover{
+    transform:translateY(10px) scale(1.2);
+    padding: 0 20px;
+}
+
+.github:hover {
+    color: var(--monochrome);
+}
+
+.dribbble:hover {
+    color: var(--dribbble-color)
+}
+
+.mail:hover {
+    color: var(--contact-color);
+}
+
+.linkedin:hover {
+    color: var(--linkedin-color);
+}
+
+.curriculum:hover {
+    color: #328c00;
+}
