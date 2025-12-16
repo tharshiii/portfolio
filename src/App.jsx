@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Skills from './pages/Skills.jsx'
 import Works from './pages/Works.jsx'
+import Contact from './pages/Contact.jsx'
 
 export default function App() {
   return (
@@ -34,7 +35,11 @@ export default function App() {
             <Skills />
           </section>
 
+          {/*Section 4 : Contact */}
+          <section id="contact">
+            <Contact />
+          </section>
         </main>
       </div>
-  );
+    );
 }

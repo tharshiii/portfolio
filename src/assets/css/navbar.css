@@ -21,7 +21,7 @@
     align-items: center;
 
     /* Effet Verre (Glassmorphism) Sombre */
-    background: rgba(10, 10, 10, 0.6); 
+    background: #D9E5EB; 
     backdrop-filter: blur(12px);       
     -webkit-backdrop-filter: blur(12px);
     
@@ -39,7 +39,7 @@
 }
 
 .logo-text {
-    color: #ffffff;
+    color: #688ea3;
     font-family: sans-serif; /* Ou "Sora" si tu l'as importée */
     font-weight: 700;
     font-size: 18px;
@@ -74,7 +74,14 @@
 
 .nav-link.active {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.15); /* Plus clair pour l'actif */
+    background: rgba(255, 255, 255, 0.25); /* Encore plus clair */
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.25), 0 2px 8px rgba(0,0,0,0.10);
+    transform: scale(1.08);
+    font-weight: 700;
+    border: 1.5px solid #fff2;
+    outline: none;
+    /* Glow effet */
+    text-shadow: 0 0 6px #fff8;
 }
 
 .titlesbtn {
@@ -88,7 +95,7 @@
 
 .cta-button {
     background: #ffffff;
-    color: #000000;
+    color: #688ea3;
     font-family: sans-serif;
     font-weight: 600;
     font-size: 14px;

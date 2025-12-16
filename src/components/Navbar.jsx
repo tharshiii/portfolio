@@ -11,8 +11,9 @@ export default function Navbar() {
       let current = 'home';
 
       sections.forEach((section) => {
-        // Si le haut de la section arrive vers le haut de l'écran
-        if (window.scrollY >= section.offsetTop - window.innerHeight / 3) {
+        const rect = section.getBoundingClientRect();
+        // Si la section est majoritairement visible (plus de la moitié)
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
           current = section.getAttribute('id');
         }
       });
@@ -20,6 +21,8 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Appel initial pour le cas où la page n'est pas tout en haut
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -36,24 +39,18 @@ export default function Navbar() {
       {/* GAUCHE : Logo */}
       <div className="nav-left">
         <button className="logo-text" onClick={() => handleNavClick('home')}>
-          <span>RAMZI.DEV</span>
+          <span>Tharshica.S</span>
         </button>
       </div>
 
       {/* CENTRE : Liens */}
       <div className="nav-center">
-        <button
-          className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-          onClick={() => handleNavClick('home')}
-        >
-          <span className="titlesbtn">Accueil</span>
-        </button>
 
         <button
           className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
           onClick={() => handleNavClick('about')}
         >
-          <span className="titlesbtn">À propos</span>
+          <span className="titlesbtn">Qui suis-je ?</span>
         </button>
 
         <button
@@ -71,9 +68,13 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* DROITE : Bouton Contact */}
       <div className="nav-right">
-        <a href="mailto:contact@ramzi.dev" className="cta-button">
+        {/* On utilise handleNavClick pour scroller vers la section #contact */}
+        <a 
+            href="#contact" 
+            className="cta-button"
+            onClick={(e) => handleNavClick(e, 'contact')}
+        >
           Me contacter
         </a>
       </div>
