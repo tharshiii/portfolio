@@ -50,7 +50,7 @@ portfolio/
 
 ## 🚀 Mise en ligne
 
-[Lien vers le site](https://www.ramziidir.dev) hébergé sur Vercel
+[Lien vers le site] hébergé sur Vercel
 
 ---
 
