@@ -1,0 +1,339 @@
+/* src/assets/css/works.css */
+
+/* --- VARIABLES LOCALES --- */
+:root {
+    --w-dark: #104668;
+    --w-petrol: #305F7D;
+    --w-steel: #5A99C2;
+    --w-light-blue: #C8DDED;
+    --w-white: #FFFFFF;
+    --w-shadow: rgba(16, 70, 104, 0.1);
+}
+
+.works-container {
+    width: 100%;
+    max-width:1000px;
+    margin: 0px;
+    padding: 0px 20px;
+}
+
+.works-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--w-dark);
+    line-height: 1;
+}
+
+/* --- FILTRES --- */
+.filters-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border-radius: 99px;
+    border: 1px solid var(--w-steel);
+    background: transparent;
+    color: var(--w-petrol);
+    font-family: "Sora", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: var(--w-light-blue);
+    color: var(--w-dark);
+    border-color: var(--w-petrol);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--w-dark);
+    color: var(--w-white);
+    border-color: var(--w-dark);
+    box-shadow: 0 4px 12px var(--w-shadow);
+}
+
+@media (max-width: 600px) {
+    .filters-container { gap: 8px; }
+    .filter-btn { padding: 8px 16px; font-size: 0.8rem; }
+}
+
+/* --- GRILLE --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.project-card {
+    background: var(--w-white);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--w-light-blue);
+    cursor: pointer;
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(16, 70, 104, 0.15);
+    border-color: var(--w-steel);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--w-light-blue);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.card-category {
+    font-family: "Sora", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--w-steel);
+}
+
+.card-title {
+    font-family: "Sora", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--w-dark);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.card-desc {
+    font-family: "Sora", sans-serif;
+    font-size: 0.85rem;
+    color: var(--w-petrol);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0.9;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.tag {
+    background: #F0F7FC;
+    color: var(--w-petrol);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: "Sora", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 1px solid var(--w-light-blue);
+}
+
+/* --- LE POP-UP (MODAL) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 70, 104, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.modal-content {
+    background: var(--w-white);
+    width: 100%;
+    max-width: 1200px; /* Largeur augmentée */
+    height: 80vh;      /* Hauteur fixe pour que le slider marche bien */
+    max-height: 900px;
+    border-radius: 24px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    animation: scaleIn 0.3s forwards;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* --- COLONNE GAUCHE : SLIDER HORIZONTAL --- */
+.modal-image-col { 
+    flex: 1.5; /* Prend plus de place que le texte */
+    background: #000; /* Fond noir pour mieux voir les photos */
+    
+    /* Configuration Flex pour mettre les images côte à côte */
+    display: flex; 
+    flex-direction: row; 
+    
+    /* Active le scroll horizontal */
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    
+    /* Snap : L'image se cale toute seule */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    
+    padding: 0;
+    border-right: 1px solid var(--w-light-blue);
+}
+
+/* Cache la barre de scroll */
+.modal-image-col::-webkit-scrollbar {
+    height: 0; /* ou 8px si vous voulez voir la barre */
+    background: transparent;
+}
+
+/* Les images du slider */
+.modal-image-col img { 
+    min-width: 100%; /* Prend toute la largeur visible */
+    width: 100%;
+    height: 100%;    /* Prend toute la hauteur */
+    object-fit: contain; /* L'image s'affiche en entier sans être coupée */
+    
+    /* Snap : On force l'arrêt au centre de l'image */
+    scroll-snap-align: center;
+    
+    display: block;
+}
+
+/* --- COLONNE DROITE : TEXTE --- */
+.modal-text-col { 
+    flex: 1; 
+    padding: 40px; 
+    overflow-y: auto; /* Scroll vertical pour le texte seulement */
+}
+
+.modal-title { 
+    font-family: "Instrument Serif", serif; 
+    font-size: 2.8rem; 
+    margin-bottom: 20px; 
+    color: var(--w-dark); 
+    line-height: 1; 
+}
+
+.modal-desc { 
+    font-family: "Sora", sans-serif; 
+    font-size: 0.95rem; 
+    color: var(--w-petrol); 
+    line-height: 1.6; 
+}
+
+.modal-desc.intro {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.modal-info-block {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 3px solid var(--w-steel);
+}
+
+.modal-section-title { 
+    font-family: "Sora", sans-serif; 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    color: var(--w-dark);
+    margin-bottom: 6px; 
+    letter-spacing: 0.5px;
+}
+
+.modal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.modal-tag { 
+    background: var(--w-light-blue); 
+    color: var(--w-dark);
+    padding: 6px 14px; 
+    border-radius: 8px; 
+    font-size: 0.85rem; 
+    font-family: "Sora", sans-serif;
+    font-weight: 600;
+}
+
+.close-btn { 
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    background: var(--w-light-blue); 
+    border: none; 
+    color: var(--w-dark);
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+.close-btn:hover { 
+    background: var(--w-dark); 
+    color: var(--w-white);
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes scaleIn { 
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; } 
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .modal-content { flex-direction: column; max-height: 95vh; height: auto; }
+    
+    .modal-image-col { 
+        flex: none; 
+        height: 300px; /* Hauteur fixe sur mobile pour le slider */
+        width: 100%;
+        border-right: none; 
+        border-bottom: 1px solid var(--w-light-blue); 
+    }
+    
+    .modal-text-col { padding: 25px; }
+    .modal-title { font-size: 2rem; }
+    .close-btn { top: 15px; right: 15px; background: rgba(255,255,255,0.8); }
+}

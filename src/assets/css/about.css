@@ -1,0 +1,447 @@
+/* src/assets/css/about.css */
+
+/* --- 1. VARIABLES --- */
+:root {
+    /* Palette Bleue */
+    --c-dark-blue:   #104668;
+    --c-petrol:      #305F7D;
+    --c-steel:       #5A99C2;
+    --c-sky-grey:    #99BCD3;
+    --c-ice:         #C8DDED;
+    --c-white:       #FFFFFF;
+
+    /* --- EFFET GLASS (SANS OMBRE) --- */
+    --glass-bg: rgba(255, 255, 255, 0.50); 
+    --glass-border: 1px solid rgba(255, 255, 255, 0.5); /* Bordure un peu plus visible pour délimiter */
+    --glass-blur: blur(20px);
+    
+    /* SUPPRESSION DE L'OMBRE */
+    --glass-shadow: none; 
+    
+    --btn-bg: var(--c-petrol);
+    --btn-text: var(--c-white);
+    
+    --text-main: var(--c-dark-blue);
+    --text-secondary: var(--c-petrol);
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- TITRE --- */
+.about-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+/* --- GRILLE --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 24px; 
+    grid-auto-rows: min-content; 
+}
+
+/* --- CARTE (SANS OMBRE) --- */
+.bento-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 24px;
+    padding: 32px;
+    
+    /* Pas d'ombre ici */
+    box-shadow: none; 
+    
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, background 0.3s, border-color 0.3s;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.35);
+    /* Juste la bordure qui devient plus blanche au survol */
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Header carte */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #99bcd35d; 
+    color: var(--c-dark-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.bento-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.6rem;
+    margin: 0;
+    color: var(--text-main);
+    text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+}
+
+/* --- BIO --- */
+.card-bio {
+    grid-column: span 2; 
+    text-align: center;
+    padding: 40px;
+}
+.bio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.bio-text {
+    font-family: "Sora", sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--c-dark-blue);
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+.bio-highlight {
+    color: var(--c-petrol);
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* Actions Bio */
+.bio-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+.btn-primary {
+    background-color: var(--c-petrol);
+    color: var(--c-white);
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: "Sora", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--c-petrol);
+}
+.btn-primary:hover {
+    background-color: var(--c-dark-blue);
+    border-color: var(--c-dark-blue);
+    transform: translateY(-2px);
+}
+
+/* Boutons réseaux sociaux */
+.social-links { display: flex; gap: 12px; }
+.social-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+    color: var(--c-petrol);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    /* --- MODIFICATION ICI : Contour visible --- */
+    border: 2px solid var(--c-petrol); /* Contour bleu solide de 2px */
+}
+.social-btn:hover {
+    background-color: var(--c-petrol);
+    border-color: var(--c-petrol);
+    color: var(--c-white);
+    transform: translateY(-3px);
+}
+
+/* --- FORMATION / EXPERIENCE --- */
+.card-formation, .card-experience {
+    grid-column: span 1; 
+    height: fit-content; 
+}
+.list-item {
+    margin-bottom: 24px;
+    border-left: 3px solid rgba(90, 153, 194, 0.4);
+    padding-left: 20px;
+    transition: border-color 0.3s ease;
+}
+.list-item:hover {
+    border-left-color: var(--c-petrol);
+}
+.list-item:last-child { margin-bottom: 0; }
+.item-date {
+    font-family: "Sora", sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--c-petrol);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+}
+.item-title {
+    font-family: "Sora", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--c-dark-blue);
+}
+.item-place {
+    font-family: "Sora", sans-serif;
+    font-size: 0.95rem;
+    color: var(--c-petrol);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* --- COMPETENCES --- */
+.card-competences {
+    grid-column: span 2; 
+    padding: 32px;
+}
+.competences-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    column-gap: 50px; 
+    row-gap: 36px;    
+}
+.comp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px; 
+}
+.comp-icon {
+    color: var(--c-petrol);
+    min-width: 32px; 
+    margin-top: 2px; 
+}
+.comp-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.comp-title {
+    font-family: "Instrument Serif", serif; 
+    font-size: 1.3rem;
+    font-weight: 700; 
+    color: var(--c-dark-blue);
+    line-height: 1.2;
+}
+.comp-desc {
+    font-family: "Sora", sans-serif;
+    font-size: 0.9rem;
+    color: var(--c-dark-blue);
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* --- OUTILS --- */
+.card-tools {
+    grid-column: span 2;
+    padding: 24px; 
+}
+.tools-category {
+    font-family: "Sora", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-petrol);
+    margin-top: 24px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 6px;
+}
+.tools-category:first-of-type { margin-top: 0; }
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); 
+    gap: 16px; 
+    margin-bottom: 20px;
+}
+.tool-item {
+    background: rgba(59, 144, 187, 0.145);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 16px 8px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.tool-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--c-white);
+}
+.tool-img {
+    width: 32px; 
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+.tool-name {
+    font-family: "Sora", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--c-petrol);
+    text-align: center;
+}
+
+/* --- SOFT SKILLS --- */
+.soft-skills-wrapper {
+    grid-column: span 2; 
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.section-title-center {
+    font-family: "Instrument Serif", serif;
+    font-size: 2.2rem;
+    text-align: center;
+    color: var(--c-dark-blue);
+    margin-bottom: 24px;
+}
+.soft-skills-grid {
+    display: flex;             
+    flex-wrap: wrap;           
+    justify-content: center;   
+    gap: 20px;
+}
+.soft-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    /* Pas d'ombre ici non plus */
+    box-shadow: none;
+    
+    border-radius: 20px;
+    padding: 24px;
+    width: calc(25% - 20px); 
+    min-width: 180px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.3s;
+}
+.soft-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+.soft-icon {
+    color: var(--c-secondary); 
+    margin-bottom: 12px;
+}
+.soft-name {
+    font-family: "Sora", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--c-dark-blue);
+    text-align: center;
+}
+
+/* --- SCROLL TOP --- */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--c-petrol);
+    color: var(--c-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none; /* Pas d'ombre sur le bouton non plus */
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.scroll-top-btn:hover {
+    background-color: var(--c-dark-blue);
+    transform: translateY(-5px);
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+.fade-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.about-container.loaded .fade-element {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: 1fr; 
+    }
+    .card-bio, .card-tools, .card-competences, .card-formation, .card-experience, .soft-skills-wrapper {
+        grid-column: span 1;
+    }
+    .competences-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .soft-card {
+        width: calc(50% - 15px);
+    }
+    .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 8px;
+    }
+}
+@media (max-width: 500px) {
+    .soft-card {
+        width: 100%;
+    }
+    .about-title {
+        font-size: 2.5rem;
+    }
+}

@@ -1,59 +1,87 @@
-/* Reset basique */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* src/assets/css/index.css */
+
+/* 1. DÉFINITION DES VARIABLES */
+:root {
+    /* --- MODE CLAIR --- */
+    --bg-main: #f4f4f4; 
+    --text-main: #0a0a0a;
+    --text-secondary: #555555;
+    
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.05);
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    
+    --btn-bg: #000000;
+    --btn-text: #ffffff;
+    
+    --input-bg: #ffffff;
+    --input-border: #e0e0e0;
 }
+
+/* --- MODE SOMBRE --- */
+[data-theme="dark"] {
+    --bg-main: #0a0a0a; /* Couleur de fond noire qui va se mélanger à l'image */
+    --text-main: #ffffff;
+    --text-secondary: #a0a0a0;
+    
+    --card-bg: #161616; /* Gris très foncé pour les cartes */
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.5);
+    
+    --btn-bg: #ffffff;
+    --btn-text: #000000;
+    
+    --input-bg: #1f1f1f;
+    --input-border: #333333;
+    
+    /* ASTUCE : En mode sombre, on mélange le noir avec ton image */
+    /* Cela assombrit l'image automatiquement sans la supprimer ! */
+    background-blend-mode: overlay; 
+}
+
+/* 2. APPLICATION GLOBALE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
     scroll-behavior: smooth;
-    /* Et surtout PAS de scroll-snap-type ! */
+    scrollbar-width: none;
+    width: 100%;
 }
 
 body {
+    /* On garde ta couleur de fond variable */
+    background-color: var(--bg-main);
+    
+    /* ON GARDE TON IMAGE ICI */
     background-image: url("/img/fond.png");
+    
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
     font-family: sans-serif;
-    color: black;
+    color: var(--text-main); 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button {
-    cursor: pointer;
-    border: none;
-    background: none;
-}
-
-/* Scroll Snap sur le conteneur principal */
-.AppMain {
-    scroll-snap-type: y mandatory;
-    overflow-y: auto;
-    height: 100vh;
-}
-
-/* Configuration des sections en mode "Sticky" (Empilement) */
 .AppMain > section {
-    min-height: 100vh;
     width: 100%;
-    /* On remet le fond sur chaque section pour cacher celle de dessous */
-    background-image: url("/img/fond.png");
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    /* Une petite bordure pour voir la séparation */
-    border-top: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-    scroll-snap-align: start;
-
-    /* Centrage du contenu */
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 140px 20px 100px 20px;
 }
 
-/* Style simple pour le texte */
-h1 { font-size: 4rem; margin-bottom: 20px; }
-p { font-size: 1.5rem; }
+#contact {
+    padding-top: 40px !important;
+    padding-bottom: 1000 !important;
+    margin-bottom: 0 !important;
+}
+
+.AppMain { position: relative; z-index: 1; }
+body, a, button {
+    cursor: none; /* Cache le curseur système */
+}

@@ -1,0 +1,70 @@
+/* src/assets/css/footer.css */
+
+.footer {
+    width: 100%;
+    /* On s'assure qu'il est en bas */
+    margin-top: auto; 
+    padding: 40px 20px;
+
+    
+    /* Une ligne fine pour séparer du contenu */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    
+    /* Fond légèrement teinté pour marquer la fin (optionnel) */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Partie Gauche : Copyright */
+.footer-left p {
+    font-family: "Sora", sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    text-align: left; /* Force l'alignement à gauche */
+}
+
+.footer-left span {
+    color: #000;
+    font-weight: 600;
+}
+
+/* Partie Droite : Réseaux */
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    color: #333;
+    transition: transform 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.social-icon:hover {
+    color: #000;
+    transform: translateY(-3px);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-left p {
+        text-align: center;
+    }
+}

@@ -1,0 +1,60 @@
+/* src/assets/css/cursor.css */
+
+/* Le curseur principal (le rond) */
+.cursor-dot {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #fff;
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: width 0.3s, height 0.3s;
+}
+
+.cursor-dot.hovered {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+/* --- LES FLEURS DE LA TRAÎNÉE --- */
+.flower-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px; /* Taille de la fleur */
+    height: 30px;
+    pointer-events: none; /* Important pour cliquer au travers */
+    z-index: 9998; /* Juste derrière le curseur principal */
+    
+    background-image: url("/img/fleur.png"); /* CHEMIN DE TON IMAGE */
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Animation de chute et disparition */
+    animation: fallAndFade 1s forwards;
+}
+
+/* L'animation : La fleur tombe un peu, tourne et disparait */
+@keyframes fallAndFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        /* Elle tombe de 50px vers le bas et tourne */
+        transform: translate(-50%, 50px) scale(0.2) rotate(45deg);
+    }
+}
+
+/* Caché sur mobile */
+@media (max-width: 900px) {
+    .cursor-dot, .flower-trail {
+        display: none;
+    }
+}

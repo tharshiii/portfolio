@@ -1,82 +1,102 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/navbar.css';
+import { Sun, Moon, List, X } from '@phosphor-icons/react';
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
+  const [theme, setTheme] = useState('light');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // État pour le menu mobile
 
-  // Détection du scroll pour allumer le bon bouton
+  // 1. Gestion du Thème (Ta logique existante)
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  // 2. Gestion du Scroll (Ta logique existante)
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
       let current = 'home';
-
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        // Si la section est majoritairement visible (plus de la moitié)
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        /* On ajuste un peu la détection (1/3 de l'écran) pour que le lien change plus vite */
+        if (rect.top <= window.innerHeight / 3) {
           current = section.getAttribute('id');
         }
       });
       setActiveSection(current);
     };
-
     window.addEventListener('scroll', handleScroll);
-    // Appel initial pour le cas où la page n'est pas tout en haut
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Fonction pour scroll smooth vers la section
-  const handleNavClick = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // Fonction pour fermer le menu quand on clique sur un lien
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav className="navbar">
-      {/* GAUCHE : Logo */}
-      <div className="nav-left">
-        <button className="logo-text" onClick={() => handleNavClick('home')}>
-          <span>Tharshica.S</span>
-        </button>
-      </div>
+      <div className="nav-container">
+        
+        {/* LOGO (Gauche) */}
+        <div className="nav-left">
+          <a href="#home" className="logo-text" onClick={closeMenu}>
+             Tharshica.S
+          </a>
+        </div>
 
-      {/* CENTRE : Liens */}
-      <div className="nav-center">
+        {/* ICONE BURGER (Visible uniquement sur mobile) */}
+        <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X size={28} /> : <List size={28} />}
+        </div>
 
-        <button
-          className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-          onClick={() => handleNavClick('about')}
-        >
-          <span className="titlesbtn">Qui suis-je ?</span>
-        </button>
+        {/* CONTENEUR LIENS + BOUTONS (Caché sur mobile sauf si open) */}
+        <div className={`nav-content ${isMenuOpen ? 'active' : ''}`}>
+            
+            {/* LIENS (Centre) */}
+            <div className="nav-center">
+              <a 
+                href="#about" 
+                className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Qui suis-je ?
+              </a>
+              <a 
+                href="#works" 
+                className={`nav-link ${activeSection === 'works' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Projets
+              </a>
+            </div>
 
-        <button
-          className={`nav-link ${activeSection === 'works' ? 'active' : ''}`}
-          onClick={() => handleNavClick('works')}
-        >
-          <span className="titlesbtn">Projets</span>
-        </button>
+            {/* BOUTONS (Droite) */}
+            <div className="nav-right">
+              {/* 1. Bouton CONTACT (avant le thème) */}
+              <a href="#contact" className="nav-link">
+                Me contacter
+              </a>
 
-        <button
-          className={`nav-link ${activeSection === 'skills' ? 'active' : ''}`}
-          onClick={() => handleNavClick('skills')}
-        >
-          <span className="titlesbtn">Compétences</span>
-        </button>
-      </div>
+              {/* 2. Bouton THEME */}
+              <button 
+                  onClick={() => { toggleTheme(); closeMenu(); }} 
+                  className="theme-btn"
+                  aria-label="Changer de thème"
+              >
+                  {theme === 'light' ? <Moon size={20} weight="fill" /> : <Sun size={20} weight="fill" />}
+              </button>
+            </div>
 
-      <div className="nav-right">
-        {/* On utilise handleNavClick pour scroller vers la section #contact */}
-        <a 
-            href="#contact" 
-            className="cta-button"
-            onClick={(e) => handleNavClick(e, 'contact')}
-        >
-          Me contacter
-        </a>
+        </div>
       </div>
     </nav>
   );

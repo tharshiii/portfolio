@@ -1,111 +1,217 @@
 /* src/assets/css/navbar.css */
 
-/* Structure principale : L'îlot flottant */
+/* --- STYLE DE LA BARRE (FLOTTANTE & ARRONDIE) --- */
 .navbar {
-    position: fixed;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
+    /* 1. POSITIONNEMENT FLOTTANT */
+    position: sticky;
+    top: 20px; /* Décalage du haut pour ne pas coller */
     z-index: 1000;
-
-    /* Dimensions et forme */
-    width: 90%;
-    max-width: 900px; 
-    height: 56px;
-    padding: 0 8px;
     
-    /* Disposition en 3 parties : Gauche - Centre - Droite */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    /* 2. TAILLE ET CENTRAGE */
+    width: 90%; /* Ne prend pas toute la largeur */
+    max-width: 1000px; /* S'arrête à la même largeur que ton contenu */
+    margin: 0 auto; /* Centre la barre horizontalement */
 
-    /* Effet Verre (Glassmorphism) Sombre */
-    background: #D9E5EB; 
-    backdrop-filter: blur(12px);       
+    /* 3. DESIGN ARRONDIE (PILULE) */
+    border-radius: 50px; /* C'est ça qui donne l'effet très arrondi */
+    padding: 0.6rem 2rem; /* Espace intérieur */
+    
+    /* 4. COULEURS ET EFFETS */
+    background-color: rgba(255, 255, 255, 0.85); /* Un peu transparent */
+    backdrop-filter: blur(12px); /* Effet de flou derrière */
     -webkit-backdrop-filter: blur(12px);
     
-    border: 1px solid rgba(255, 255, 255, 0.08); 
-    border-radius: 100px; 
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Légère bordure blanche */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* Ombre douce pour la faire flotter */
     
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
 }
 
-/* --- GAUCHE : LOGO --- */
-.nav-left {
-    padding-left: 20px;
+/* Gestion du mode sombre */
+[data-theme='dark'] .navbar {
+    background-color: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
+/* --- LOGO --- */
 .logo-text {
-    color: #688ea3;
-    font-family: sans-serif; /* Ou "Sora" si tu l'as importée */
+    font-family: "Instrument Serif", serif;
+    font-size: 1.5rem;
     font-weight: 700;
-    font-size: 18px;
+    color: var(--text-main);
     text-decoration: none;
-    letter-spacing: -0.5px;
+    z-index: 1001;
 }
 
-/* --- CENTRE : LIENS --- */
+/* --- CONTENEUR GLOBAL (Liens + Boutons) --- */
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* --- LIENS CENTRAUX --- */
 .nav-center {
     display: flex;
-    gap: 4px;
-    /* Sur mobile, on pourrait vouloir cacher ça, mais gardons simple */
+    gap: 2rem;
 }
 
 .nav-link {
-    color: #a0a0a0; /* Gris clair par défaut */
-    font-family: sans-serif;
-    font-weight: 500;
-    font-size: 14px;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 99px;
-    transition: all 0.2s ease;
+    color: var(--text-secondary);
+    font-family: "Sora", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-main);
+}
+
+/* ANIMATION SOULIGNEMENT */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-main);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* --- PARTIE DROITE (Boutons) --- */
+.nav-right {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
-.nav-link:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.nav-link.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.25); /* Encore plus clair */
-    box-shadow: 0 0 8px 2px rgba(255,255,255,0.25), 0 2px 8px rgba(0,0,0,0.10);
-    transform: scale(1.08);
-    font-weight: 700;
-    border: 1.5px solid #fff2;
-    outline: none;
-    /* Glow effet */
-    text-shadow: 0 0 6px #fff8;
-}
-
-.titlesbtn {
-    /* Style optionnel pour le texte des boutons */
-}
-
-/* --- DROITE : BOUTON --- */
-.nav-right {
-    padding-right: 6px;
-}
-
+/* Bouton Contact */
 .cta-button {
-    background: #ffffff;
-    color: #688ea3;
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 14px;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 99px;
-    transition: transform 0.2s ease;
-    display: inline-block;
+    font-family: "Sora", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    padding: 10px 24px;
+    border: 1px solid var(--card-border);
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    background: transparent;
 }
 
 .cta-button:hover {
-    transform: scale(1.05);
+    background: var(--text-main);
+    color: var(--card-bg);
+    border-color: var(--text-main);
+    transform: translateY(-2px);
+}
+
+/* Bouton Thème */
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.theme-btn:hover {
+    color: var(--text-main);
+    background-color: rgba(0,0,0,0.05); /* Petit rond gris au survol */
+    transform: rotate(15deg);
+}
+
+/* --- MENU BURGER (Mobile) --- */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    color: var(--text-main);
+    z-index: 1001;
+}
+
+/* =========================================
+   RESPONSIVE (TABLETTE ET MOBILE)
+   ========================================= */
+@media (max-width: 900px) {
+    
+    /* On ajuste la barre pour qu'elle prenne un peu plus de place sur mobile
+       mais garde l'effet flottant */
+    .navbar {
+        width: 95%; /* Un peu plus large sur mobile */
+        padding: 0.8rem 1.5rem;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    /* Le menu latéral qui s'ouvre */
+    .nav-content {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: var(--card-bg); /* Fond opaque pour cacher le site */
+        
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        
+        /* Reset des styles de la barre flottante car c'est un menu plein écran */
+        border-radius: 0; 
+        
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-content.active {
+        transform: translateX(0);
+    }
+
+    .nav-center {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        font-family: "Instrument Serif", serif;
+    }
+
+    .nav-right {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
 }

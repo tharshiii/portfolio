@@ -1,129 +1,185 @@
-/* Home styling */
+/* src/assets/css/home.css */
 
-h1, p {
-    text-align: center;
+/* Définition locale des couleurs */
+:root {
+    --col-dark: #104668;       /* Titres, Texte fort */
+    --col-primary: #305F7D;    /* Boutons, Sous-titres */
+    --col-secondary: #5A99C2;  /* Accents, Bordures */
+    --col-soft: #99BCD3;       /* Ombres douces */
+    --col-light: #C8DDED;      /* Arrière-plans clairs */
+    --col-white: #ffffff;
 }
 
-.container {
-    max-width: 50%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 48px;
-    padding: 24px;
-    box-sizing: border-box;
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-}
-
-.hero_head {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-
-    /* apparition depuis le bas, terminaison un peu vers le haut */
-    transform: translateY(24px);
-    opacity: 0;
-    animation: slideFadeUp 700ms cubic-bezier(.22,.9,.32,1) forwards;
-}
-
-.anim_p {
-    /* apparition depuis le bas, terminaison un peu vers le haut */
-    transform: translateY(24px);
-    opacity: 0;
-    animation: slideFadeUp 700ms cubic-bezier(.22,.9,.32,1) forwards;
-    animation-delay: 300ms;
-}
-
-@keyframes slideFadeUp {
-    from {
-        transform: translateY(24px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(-12px);
-        opacity: 1;
-    }
-}
-
-/* Respecter la préférence de réduction des animations */
-@media (prefers-reduced-motion: reduce) {
-    .hero_head {
-        transform: none;
-        opacity: 1;
-        animation: none;
-    }
-}
-
-/* Resize mini earth*/
-.globe_emoji {
-	width: 42px;
-	height: 42px;
-}
-
-.button {
-    text-decoration: none;
-    font-family: "Sora";
-    font-style: normal;
-    font-weight: 400;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: -1.5px;
-    margin: 8px;
-}
-
-.links{
-    position: relative;
+.home-container {
     width: 100%;
-    height: fit-content;
+    max-width: 1200px;
+    /* On enlève le min-height: 90vh strict qui forçait le centrage au milieu de l'écran */
+    min-height: auto; 
+    margin: auto;
+    
     display: flex;
     flex-direction: row;
+    
+    /* MODIFICATION ICI : On aligne en haut (flex-start) au lieu du centre */
+    align-items: flex-start; 
     justify-content: center;
-    gap: 16px;
+    
+    /* On gère l'espace avec le padding-top */
+    padding-top: 20px; /* Ajustez ce chiffre pour monter/descendre le bloc entier */
+    padding-bottom: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    gap: 80px;
 }
 
-.button {
-    color: var(--monochrome);
-    transition: all .5s;
-    width: fit-content;
-    height: fit-content;
+/* --- PARTIE GAUCHE : TEXTES --- */
+.hero-content {
+    flex: 0 auto; 
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 24px;
+    width: 100%;
+    max-width: 550px; 
+    /* Petit ajustement pour aligner visuellement le texte avec le haut de l'image */
+    margin-top: 20px;
+}
+
+/* LE TITRE GÉANT */
+.hero-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 5.5rem;
+    line-height: 0.9;
+    color: var(--col-dark); /* #104668 */
+    margin: 10px 0;
+}
+
+/* Le span en italique */
+.hero-title span {
+    font-style: italic;
+    color: var(--col-primary); /* #305F7D */
+}
+
+/* Paragraphe */
+.hero-text {
+    font-family: "Sora", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--col-primary); /* #305F7D */
+    max-width: 600px;
+}
+
+.hero-text strong {
+    color: var(--col-dark); /* #104668 */
+}
+
+/* Recherche de stage */
+.status-box {
+    padding: 12px 18px;
+    background-color: rgba(200, 221, 237, 0.3); /* #C8DDED transparent */
+    border-left: 4px solid var(--col-secondary); /* #5A99C2 */
+    font-family: "Sora", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--col-dark); /* #104668 */
+    border-radius: 0 8px 8px 0;
+}
+
+/* --- GROUPE DE BOUTONS --- */
+.hero-buttons {
+    display: flex;
+    gap: 16px; 
+    margin-top: 24px;
+    flex-wrap: wrap; 
+}
+
+.hero-btn {
+    padding: 14px 28px;
+    background: var(--col-primary); /* #305F7D */
+    color: var(--col-white);
+    font-family: "Sora", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 99px;
+    border: 2px solid var(--col-primary);
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
-.button:hover{
-    transform:translateY(10px) scale(1.2);
-    padding: 0 20px;
+.hero-btn:hover {
+    background-color: var(--col-dark); /* #104668 */
+    border-color: var(--col-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(16, 70, 104, 0.2);
 }
 
-.github:hover {
-    color: var(--monochrome);
+.secondary-btn {
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--col-primary); /* #305F7D */
+    font-family: "Sora", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 99px;
+    border: 2px solid var(--col-secondary); /* #5A99C2 */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
-.dribbble:hover {
-    color: var(--dribbble-color)
+.secondary-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--col-primary);
+    background: var(--col-light); /* #C8DDED */
+    color: var(--col-dark);
 }
 
-.mail:hover {
-    color: var(--contact-color);
+/* --- PARTIE DROITE : IMAGE --- */
+.hero-image-wrapper {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
 }
 
-.linkedin:hover {
-    color: var(--linkedin-color);
+.hero-img {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 200px 200px 20px 20px; 
+    box-shadow: 20px 20px 0px var(--col-secondary); /* #5A99C2 */
+    border: 4px solid var(--col-white);
 }
 
-.curriculum:hover {
-    color: #328c00;
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+    .home-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 40px;
+        padding-top: 100px; /* Un peu moins d'espace sur mobile */
+    }
+    
+    .hero-content { 
+        align-items: center; 
+        margin-top: 0;
+    }
+    
+    .hero-buttons { justify-content: center; }
+    
+    .hero-title { font-size: 3.5rem; } 
+    
+    .status-box { 
+        border-left: none; 
+        border-top: 4px solid var(--col-secondary); 
+        border-radius: 8px;
+    }
+    .hero-img { max-width: 300px; }
 }
