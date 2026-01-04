@@ -113,7 +113,6 @@ export default function Works() {
     // --- 2. GESTION DES FILTRES ---
     const filters = ["Tous", "Web", "UI/UX", "Audiovisuel", "Communication"];
     const [activeFilter, setActiveFilter] = useState("Tous");
-
     const filteredProjects = projects.filter(project => 
         activeFilter === "Tous" 
         ? true 
