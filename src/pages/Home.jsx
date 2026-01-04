@@ -7,8 +7,11 @@ export default function Home() {
         <div className="home-container">
             
             {/* --- 1. BLOC TEXTE (GAUCHE) --- */}
-            <div className="hero-content">
     
+            <div className="hero-content">
+         <div className="status-badge">
+            🚧 Portfolio en construction
+        </div>
                 <h1 className="hero-title">
                     Tharshica <br/>
                     <span style={{fontStyle: 'italic'}}>SIVA ANANDAN !</span>

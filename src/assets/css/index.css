@@ -85,3 +85,23 @@ body {
 body, a, button {
     cursor: none; /* Cache le curseur système */
 }
+/* Nouveau style pour le badge au-dessus du prénom */
+.status-badge {
+    display: inline-block;
+    width: fit-content;
+    
+    background-color: rgba(16, 70, 104, 0.1);
+    color: #104668;
+    border: 1px solid rgba(16, 70, 104, 0.2);
+    
+    /* --- CE QUI CHANGE POUR AGRANDIR --- */
+    padding: 10px 24px;   /* Plus d'espace autour (Haut/Bas  Gauche/Droite) */
+    font-size: 1rem;      /* Texte plus grand (avant c'était 0.8rem) */
+    border-radius: 50px;  /* Garde la forme arrondie */
+    
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Espacement des lettres un peu plus large */
+    
+    margin-bottom: 25px;  /* Un peu plus d'espace sous le badge */
+}
