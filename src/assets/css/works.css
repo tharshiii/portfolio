@@ -12,7 +12,7 @@
 
 .works-container {
     width: 100%;
-    max-width:1000px;
+    max-width: 1000px;
     margin: 0px;
     padding: 0px 20px;
 }
@@ -101,9 +101,10 @@
 
 .card-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+    height: 100%;          
+    object-fit: cover;     
+    display: block;        
+    border-radius: 16px 0 0 16px; 
 }
 
 .project-card:hover .card-image {
@@ -174,8 +175,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(16, 70, 104, 0.85);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
     z-index: 10000;
     display: flex;
     justify-content: center;
@@ -188,63 +190,111 @@
 .modal-content {
     background: var(--w-white);
     width: 100%;
-    max-width: 1200px; /* Largeur augmentée */
-    height: 80vh;      /* Hauteur fixe pour que le slider marche bien */
-    max-height: 900px;
-    border-radius: 24px;
+    
+    /* --- NOUVELLE TAILLE RÉDUITE --- */
+    max-width: 1000px;  /* Plus étroit (C'était 1200px) */
+    
+    height: 60vh;       /* Moins haut (C'était 85vh) */
+    max-height: 60vh;   /* On bloque la hauteur ici */
+    /* ------------------------------- */
+    
+    border-radius: 20px;
     display: flex;
     overflow: hidden;
     position: relative;
     animation: scaleIn 0.3s forwards;
     box-shadow: 0 20px 50px rgba(0,0,0,0.2);
 }
+/* --- COLONNE GAUCHE (SLIDER) --- */
 
-/* --- COLONNE GAUCHE : SLIDER HORIZONTAL --- */
+/* COLONNE GAUCHE (SLIDER) */
 .modal-image-col { 
-    flex: 1.5; /* Prend plus de place que le texte */
-    background: #000; /* Fond noir pour mieux voir les photos */
+    flex: 1.5; 
     
-    /* Configuration Flex pour mettre les images côte à côte */
-    display: flex; 
-    flex-direction: row; 
+    /* MODIFICATION : On enlève le noir, on met transparent ou blanc */
+    background: transparent; 
     
-    /* Active le scroll horizontal */
-    overflow-x: auto; 
-    overflow-y: hidden; 
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
-    /* Snap : L'image se cale toute seule */
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    
-    padding: 0;
-    border-right: 1px solid var(--w-light-blue);
+    height: 100%; 
+    overflow: hidden; 
+    padding: 0; 
 }
 
-/* Cache la barre de scroll */
-.modal-image-col::-webkit-scrollbar {
-    height: 0; /* ou 8px si vous voulez voir la barre */
-    background: transparent;
-}
-
-/* Les images du slider */
-.modal-image-col img { 
-    min-width: 100%; /* Prend toute la largeur visible */
+/* L'IMAGE DU SLIDER */
+.slider-img {
     width: 100%;
-    height: 100%;    /* Prend toute la hauteur */
-    object-fit: contain; /* L'image s'affiche en entier sans être coupée */
+    height: 100%;
     
-    /* Snap : On force l'arrêt au centre de l'image */
-    scroll-snap-align: center;
+    /* --- SOLUTION ANTI-BORDURES --- */
+    object-fit: cover; /* L'image zoome pour remplir TOUT l'espace */
+    /* ------------------------------ */
     
     display: block;
+    
+    /* On enlève le fond noir de sécurité */
+    background-color: transparent; 
 }
 
-/* --- COLONNE DROITE : TEXTE --- */
+/* Contrôles du slider */
+.slider-controls {
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+    z-index: 10;
+}
+
+.slider-btn {
+    width: 50px;
+    height: 40px;
+    background-color: var(--w-light-blue); 
+    color: var(--w-dark); 
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; 
+}
+
+.slider-btn:hover {
+    background-color: var(--w-dark);
+    color: var(--w-white);
+    transform: scale(1.05);
+}
+
+.slider-counter {
+    color: var(--w-dark); 
+    font-family: "Instrument Serif", serif;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+/* --- COLONNE DROITE (TEXTE) --- */
 .modal-text-col { 
     flex: 1; 
     padding: 40px; 
-    overflow-y: auto; /* Scroll vertical pour le texte seulement */
+    
+    /* Le scroll se fait uniquement ici si le texte est long */
+    overflow-y: auto;  
+    max-height: 100%; /* Utilise toute la hauteur disponible */
 }
+
+.modal-text-col::-webkit-scrollbar { width: 6px; }
+.modal-text-col::-webkit-scrollbar-track { background: transparent; }
+.modal-text-col::-webkit-scrollbar-thumb { background-color: var(--w-light-blue); border-radius: 10px; }
+.modal-text-col::-webkit-scrollbar-thumb:hover { background-color: var(--w-petrol); }
 
 .modal-title { 
     font-family: "Instrument Serif", serif; 
@@ -261,10 +311,7 @@
     line-height: 1.6; 
 }
 
-.modal-desc.intro {
-    font-size: 1.05rem;
-    margin-bottom: 30px;
-}
+.modal-desc.intro { font-size: 1.05rem; margin-bottom: 30px; }
 
 .modal-info-block {
     margin-bottom: 20px;
@@ -321,13 +368,17 @@
     to { transform: scale(1); opacity: 1; } 
 }
 
-/* Responsive */
+/* Responsive (Mobile) */
 @media (max-width: 900px) {
-    .modal-content { flex-direction: column; max-height: 95vh; height: auto; }
+    .modal-content { 
+        flex-direction: column; 
+        max-height: 95vh; 
+        height: auto; /* Sur mobile, on laisse la hauteur auto pour scroller la page */
+    }
     
     .modal-image-col { 
         flex: none; 
-        height: 300px; /* Hauteur fixe sur mobile pour le slider */
+        height: 300px; 
         width: 100%;
         border-right: none; 
         border-bottom: 1px solid var(--w-light-blue); 

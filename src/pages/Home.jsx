@@ -35,17 +35,22 @@ export default function Home() {
                         <DownloadSimple size={18} weight="bold" />
                     </a>
                 </div>
-            </div> 
-            {/* Fin du bloc hero-content */}
+                 </div> 
+                                {/* Fin du bloc hero-content */}
 
-            {/* --- 2. BLOC IMAGE (DROITE) --- */}
-            <div className="hero-image-wrapper">
-                <img 
-                    src="https://placehold.co/400x550/EEE/31343C?text=Tharshica" 
-                    alt="Portrait de Tharshica" 
-                    className="hero-img" 
-                />
-            </div>
+                            {/* --- BLOC IMAGE AVEC FLEURS --- */}
+                    <div className="hero-image-wrapper">
+                        
+                        {/* 1. Les fleurs décoratives (Ajoute cette ligne) */}
+                        <img src="/img/fleurs.png" alt="" className="flower-decoration" />
+
+                        {/* 2. Ta photo (Reste inchangée) */}
+                        <img 
+                            src="/img/portrait.png" 
+                            alt="Portrait de Tharshica" 
+                            className="hero-img" 
+                        />
+                </div>
 
         </div>
     );
