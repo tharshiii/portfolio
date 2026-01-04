@@ -85,15 +85,6 @@ export default function Navbar() {
               <a href="#contact" className="nav-link">
                 Me contacter
               </a>
-
-              {/* 2. Bouton THEME */}
-              <button 
-                  onClick={() => { toggleTheme(); closeMenu(); }} 
-                  className="theme-btn"
-                  aria-label="Changer de thème"
-              >
-                  {theme === 'light' ? <Moon size={20} weight="fill" /> : <Sun size={20} weight="fill" />}
-              </button>
             </div>
 
         </div>
