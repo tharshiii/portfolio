@@ -186,7 +186,7 @@
     animation: floatFlowers 8s ease-in-out infinite alternate;
 }
 
-/* 3. TA PHOTO (J'ai nettoyé les doublons ici) */
+/* 3. TA PHOTO */
 .hero-image-wrapper .hero-img {
     position: relative;
     width: 100%;
@@ -199,8 +199,10 @@
     /* Z-INDEX SUPÉRIEUR */
     z-index: 2; 
     
-    /* Le décalage vers le haut que tu voulais */
-    top: -50px; 
+    /* --- MODIFICATION ICI POUR BAISSER L'IMAGE --- */
+    /* On enlève le "top: -50px" qui la remontait */
+    margin-top: 80px; /* Ajuste ce chiffre (50px, 80px, 100px) pour descendre plus ou moins */
+    /* --------------------------------------------- */
     
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 20px 50px rgba(16, 70, 104, 0.2);
