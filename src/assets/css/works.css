@@ -368,23 +368,24 @@
     to { transform: scale(1); opacity: 1; } 
 }
 
-/* Responsive (Mobile) */
+/* --- DANS src/assets/css/works.css (tout en bas) --- */
 @media (max-width: 900px) {
-    .modal-content { 
-        flex-direction: column; 
-        max-height: 95vh; 
-        height: auto; /* Sur mobile, on laisse la hauteur auto pour scroller la page */
+    .modal-content {
+        width: 95%;        /* Laisse une petite marge sur les côtés */
+        max-height: 85vh;  /* Évite que ça soit trop haut */
+        padding: 20px;     /* Moins de padding interne */
+        flex-direction: column;
     }
-    
-    .modal-image-col { 
-        flex: none; 
-        height: 300px; 
+
+    .modal-image-col, .modal-text-col {
         width: 100%;
-        border-right: none; 
-        border-bottom: 1px solid var(--w-light-blue); 
+    }
+
+    .modal-image-col {
+        height: 200px; /* Hauteur fixe pour l'image sur mobile */
     }
     
-    .modal-text-col { padding: 25px; }
-    .modal-title { font-size: 2rem; }
-    .close-btn { top: 15px; right: 15px; background: rgba(255,255,255,0.8); }
+    .slider-img {
+        object-fit: cover; /* L'image remplit bien la zone */
+    }
 }

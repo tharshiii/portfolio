@@ -7,7 +7,6 @@ export default function Works() {
     
     // --- 1. DONNÉES DES PROJETS ---
     const projects = [
-       
         {
             id: 2,
             title: "Agence Immobilière",
@@ -27,6 +26,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Projet en duo (Figma).",
+            duration: "3 semaines",
             objectifs: "Allier Esthétisme & Performance SEO.",
             tags: ["Figma", "Design System", "Branding", "SEO"],
             image: "/img/armor1.webp",
@@ -58,6 +58,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Projet académique individuel.",
+            duration: "2 semaines",
             objectifs: "Comprendre la logique CMS & Arborescence.",
             tags: ["Jimdo", "CMS", "Web Design", "Arborescence"],
             image: "/img/titeuftestt.webp",
@@ -88,6 +89,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Projet de groupe (Stratégie de lancement).",
+            duration: "1 mois",
             objectifs: "Définir la viabilité & Acquérir des utilisateurs.",
             tags: ["Étude de marché", "Marketing Digital", "KPIs", "Gestion de projet"],
             image: "/img/equilibiotestt.webp",
@@ -119,6 +121,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Projet Créatif (Format Reels/TikTok).",
+            duration: "2 semaines",
             objectifs: "Dynamiser la présentation produit.",
             tags: ["DaVinci Resolve", "Motion Design", "Mixed Media", "Tournage"],
             image: "/img/kiko-thumb.jpg",
@@ -152,6 +155,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Projet de groupe (Refonte & Campagne)",
+            duration: "1 mois",
             objectifs: "Moderniser l'image & Libérer la parole.",
             tags: ["Stratégie", "Social Media", "Copywriting", "UX Design"],
             image: "/img/lpam1.webp",
@@ -186,6 +190,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Lancement de produit (Start-up/Innovation).",
+            duration: "3 semaines",
             objectifs: "Acquisition de 100k utilisateurs.",
             tags: ["Stratégie de Marque", "Réalité Augmentée", "Growth Marketing", "Storytelling"],
             image: "/img/monu1.webp",
@@ -214,6 +219,7 @@ export default function Works() {
                 </ul>
             `,
             context: "Projet personnel (Full Stack CMS).",
+            duration: "En cours",
             objectifs: "Allier image zen & conversion.",
             tags: ["WordPress", "SEO", "Branding", "Responsive"],
             image: "/img/yoga-home.jpg",
@@ -221,7 +227,6 @@ export default function Works() {
                 "/img/yoga-home.jpg",
             ]
         },
-       
     ];
 
     // --- 2. GESTION DES FILTRES ---
@@ -305,7 +310,7 @@ export default function Works() {
                         {/* --- COLONNE GAUCHE AVEC SLIDER --- */}
                         <div className="modal-image-col">
                             
-                            {/* --- REMPLACEMENT ICI : BLOC LOGIQUE VIDÉO/IMAGE --- */}
+                            {/* LOGIQUE VIDÉO/IMAGE */}
                             {(() => {
                                 const currentMedia = (selectedProject.images || [selectedProject.image])[currentSlide];
                                 const isVideo = currentMedia.endsWith('.mp4') || currentMedia.endsWith('.webm');
@@ -314,11 +319,11 @@ export default function Works() {
                                     <video 
                                         src={currentMedia} 
                                         className="slider-img" 
-                                        controls      /* Affiche les boutons play/pause */
-                                        autoPlay      /* Lance la vidéo tout seul */
-                                        loop          /* Rejoue en boucle */
-                                        muted         /* Coupe le son (obligatoire pour l'autoplay sur certains navigateurs) */
-                                        playsInline   /* Pour que ça reste dans le cadre sur mobile */
+                                        controls      
+                                        autoPlay      
+                                        loop          
+                                        muted         
+                                        playsInline   
                                     />
                                 ) : (
                                     <img 
@@ -328,7 +333,6 @@ export default function Works() {
                                     />
                                 );
                             })()}
-                            {/* --- FIN DU BLOC --- */}
 
                             {/* Contrôles du slider */}
                             <div className="slider-controls">
@@ -349,22 +353,40 @@ export default function Works() {
                         {/* --- COLONNE DROITE --- */}
                         <div className="modal-text-col">
                             <h2 className="modal-title">{selectedProject.title}</h2>
+                            
+                            {/* === BLOC 1 : INFOS (Context, Durée, Objectifs, Outils) === */}
+                            <div style={{ marginBottom: '30px' }}>
+                                <div className="modal-info-block">
+                                    <div className="modal-section-title">Contexte & Durée</div>
+                                    <p className="modal-desc">
+                                        {selectedProject.context} <br/>
+                                        <span style={{ opacity: 0.7, fontSize: '0.9em', display: 'block', marginTop: '4px' }}>
+                                            ⏳ Durée : {selectedProject.duration}
+                                        </span>
+                                    </p>
+                                </div>
+
+                                <div className="modal-info-block">
+                                    <div className="modal-section-title">Objectifs</div>
+                                    <p className="modal-desc">{selectedProject.objectifs}</p>
+                                </div>
+                                
+                                <div className="modal-info-block">
+                                    <div className="modal-section-title">Outils & Technologies</div>
+                                    <div className="modal-tags">
+                                        {selectedProject.tags.map((tag, i) => <span key={i} className="modal-tag">{tag}</span>)}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* === BLOC 2 : DESCRIPTION DÉTAILLÉE === */}
+                            {/* Ajout d'une bordure fine pour séparer visuellement */}
                             <div 
                                 className="modal-desc intro" 
                                 dangerouslySetInnerHTML={{ __html: selectedProject.fullDescription }} 
+                                style={{ borderTop: '1px solid rgba(0,0,0,0.1)', paddingTop: '20px' }}
                             />
-                            <div className="modal-info-block">
-                                <div className="modal-section-title">Contexte</div>
-                                <p className="modal-desc">{selectedProject.context}</p>
-                            </div>
-                            <div className="modal-info-block">
-                                <div className="modal-section-title">Objectifs</div>
-                                <p className="modal-desc">{selectedProject.objectifs}</p>
-                            </div>
-                            <div className="modal-section-title">Outils & Technologies</div>
-                            <div className="modal-tags">
-                                {selectedProject.tags.map((tag, i) => <span key={i} className="modal-tag">{tag}</span>)}
-                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -1,64 +1,78 @@
 import React from 'react';
-import '../assets/css/mentions.css';
-import { X } from '@phosphor-icons/react';
+import '../assets/css/mentions.css'; // On va créer ce CSS juste après
+import { X, ShieldCheck, Copyright, Cookie } from '@phosphor-icons/react';
 
 export default function Mentions({ onClose }) {
     return (
         <div className="mentions-overlay" onClick={onClose}>
             <div className="mentions-modal" onClick={(e) => e.stopPropagation()}>
                 
-                <button className="close-mentions" onClick={onClose}>
-                    <X size={20} />
+                <button className="close-btn" onClick={onClose}>
+                    <X size={24} weight="bold" />
                 </button>
 
-                <h2 className="mentions-title">Mentions Légales</h2>
+                <h2 className="mentions-title">Mentions Légales & RGPD</h2>
 
-                <div className="mentions-section">
-                    <h3 className="mentions-subtitle">1. Éditeur du site</h3>
-                    <p className="mentions-text">
-                        Le présent site est édité par <strong>Tharshica S.</strong>, étudiante en BUT Métiers du Multimédia et de l'Internet (MMI).<br/>
-                        Statut : Particulier / Étudiante.<br/>
-                        Email de contact : <a href="mailto: tharshica.s@gmail.com" className="mentions-link">tharshica.s@gmail.com</a>
-                    </p>
+                <div className="mentions-content">
+                    
+                    {/* --- 1. ÉDITEUR & HÉBERGEUR --- */}
+                    <section className="mentions-section">
+                        <h3><ShieldCheck size={20} className="icon-title"/> Édition & Hébergement</h3>
+                        <p>
+                            <strong>Propriétaire du site :</strong> Tharshica SIVA ANANDAN<br/>
+                            <strong>Statut :</strong> Étudiante en BUT MMI (Projet Pédagogique)<br/>
+                            <strong>Contact :</strong> contact@tharshica.com<br/>
+                            <br/>
+                            <strong>Hébergement :</strong><br/>
+                            Ce site est hébergé par <strong>Vercel Inc.</strong><br/>
+                            340 S Lemon Ave #4133 Walnut, CA 91789, USA.
+                        </p>
+                    </section>
+
+                    {/* --- 2. PROPRIÉTÉ INTELLECTUELLE --- */}
+                    <section className="mentions-section">
+                        <h3><Copyright size={20} className="icon-title"/> Propriété Intellectuelle</h3>
+                        <p>
+                            L'ensemble de ce site (structure, design, textes, images, animations) relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle.
+                        </p>
+                        <ul>
+                            <li><strong>Contenus originaux :</strong> Les maquettes, logos et textes présentés dans la section "Projets" sont la propriété exclusive de Tharshica SIVA ANANDAN, sauf mention contraire (projets de groupe).</li>
+                            <li><strong>Crédits tiers :</strong> Les icônes proviennent de la librairie <em>Phosphor Icons</em>. Les polices sont issues de <em>Google Fonts</em> (Sora, Instrument Serif).</li>
+                        </ul>
+                        <p className="warning-text">
+                            Toute reproduction, totale ou partielle, sans autorisation expresse est interdite.
+                        </p>
+                    </section>
+
+                    {/* --- 3. RGPD & DONNÉES --- */}
+                    <section className="mentions-section">
+                        <h3><ShieldCheck size={20} className="icon-title"/> Protection des Données (RGPD)</h3>
+                        <p>
+                            Dans le cadre du formulaire de contact, certaines données personnelles sont collectées (Nom, Email).
+                        </p>
+                        <p>
+                            <strong>Finalité :</strong> Ces données servent uniquement à répondre à votre demande de contact. Elles ne sont <strong>jamais</strong> vendues ni cédées à des tiers.
+                        </p>
+                        <p>
+                            <strong>Droit d'accès :</strong> Conformément à la loi, vous disposez d'un droit d'accès, de modification et de suppression de vos données en me contactant par email.
+                        </p>
+                    </section>
+
+                    {/* --- 4. COOKIES --- */}
+                    <section className="mentions-section">
+                        <h3><Cookie size={20} className="icon-title"/> Gestion des Cookies</h3>
+                        <p>
+                            Ce site a été conçu pour respecter votre vie privée.
+                        </p>
+                        <p>
+                            <strong>Cookies techniques :</strong> Seuls des cookies strictement nécessaires au fonctionnement (ex: mémorisation de votre choix de thème ou de fermeture de ce bandeau) peuvent être déposés. Ils ne nécessitent pas de consentement.
+                        </p>
+                        <p>
+                            <strong>Cookies de suivi :</strong> Ce site <strong>n'utilise aucun cookie publicitaire</strong> ou de tracking tiers (type Google Analytics). Vous naviguez donc en toute tranquillité.
+                        </p>
+                    </section>
+
                 </div>
-
-                <div className="mentions-section">
-                    <h3 className="mentions-subtitle">2. Hébergement</h3>
-                    <p className="mentions-text">
-                        Ce site est hébergé par :<br/>
-                        <strong>Vercel Inc.</strong> (ou GitHub Pages / Netlify - à modifier selon ton choix)<br/>
-                        Adresse : 340 S Lemon Ave #4133 Walnut, CA 91789, USA.<br/>
-                        Site web : https://vercel.com
-                    </p>
-                </div>
-
-                <div className="mentions-section">
-                    <h3 className="mentions-subtitle">3. Propriété intellectuelle</h3>
-                    <p className="mentions-text">
-                        L’ensemble de ce site relève de la législation française et internationale sur le droit d’auteur et la propriété intellectuelle. 
-                        Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
-                        Toute reproduction, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable.
-                    </p>
-                </div>
-
-                <div className="mentions-section">
-                    <h3 className="mentions-subtitle">4. Données personnelles</h3>
-                    <p className="mentions-text">
-                        Ce site utilise un formulaire de contact géré par le service <strong>Formspree</strong>. 
-                        Les informations recueillies (Nom, Email, Message) ne sont utilisées que dans le cadre d'une prise de contact professionnelle et ne sont jamais cédées à des tiers.
-                        Conformément à la loi « Informatique et Libertés », vous pouvez exercer votre droit d'accès aux données vous concernant et les faire rectifier en contactant l'éditeur.
-                    </p>
-                </div>
-
-                <div className="mentions-section">
-                    <h3 className="mentions-subtitle">5. Crédits</h3>
-                    <p className="mentions-text">
-                        Design & Développement : Tharshica S.<br/>
-                        Icônes : Phosphor Icons.<br/>
-                        Polices : Instrument Serif & Sora (Google Fonts).
-                    </p>
-                </div>
-
             </div>
         </div>
     );

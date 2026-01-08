@@ -9,12 +9,14 @@ import Contact from './components/Contact'; // Import unique
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Works from './pages/Works.jsx'
+import CookieBanner from './components/CookieBanner';
 
 export default function App() {
   return (
       <div className="App">
         <Navbar />
         <Cursor />
+        <CookieBanner />
         
         <main className="AppMain">
           

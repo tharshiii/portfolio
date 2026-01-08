@@ -226,33 +226,44 @@
 }
 
 
-/* --- MOBILE --- */
+/* --- RESPONSIVE MOBILE (À coller à la fin de home.css) --- */
 @media (max-width: 900px) {
+    
     .home-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 40px;
-        /* Réduit l'espace sur mobile aussi */
-        padding-top: 40px; 
-        padding-bottom: 20px;
+        flex-direction: column; /* Empile le texte et l'image */
+        padding-top: 80px; /* Espace pour le menu hamburger */
+        height: auto; /* Laisse la hauteur s'adapter */
+    }
+
+    /* Le bloc texte passe en premier */
+    .hero-content {
+        width: 100%;
+        text-align: center; /* Centre le texte sur mobile */
+        padding: 20px;
+        order: 1; /* Texte en haut */
+    }
+
+    /* L'image passe en dessous */
+    .hero-image-wrapper {
+        width: 100%;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        order: 2; /* Image en bas */
+    }
+
+    .hero-img {
+        width: 70%; /* Réduit un peu l'image */
+        max-width: 300px;
+    }
+
+    /* Centre les boutons */
+    .hero-buttons {
+        justify-content: center;
     }
     
-    .hero-content { 
-        align-items: center; 
-        margin-top: 0;
-    }
-    
-    .hero-buttons { justify-content: center; }
-    
-    .hero-title { font-size: 3.5rem; } 
-    
-    .status-box { 
-        border-left: none; 
-        border-top: 4px solid var(--col-secondary); 
-        border-radius: 8px;
-    }
-    .hero-image-wrapper .hero-img { 
-        max-width: 300px; 
-        top: 0; /* Sur mobile on enlève le décalage pour pas que ça sorte */
+    /* Réduit la taille du gros titre */
+    .hero-title {
+        font-size: 2.5rem;
     }
 }

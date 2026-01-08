@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import '../assets/css/footer.css';
-import { LinkedinLogo, GithubLogo, InstagramLogo, EnvelopeSimple } from '@phosphor-icons/react';
-// Import du composant Mentions
-import Mentions from './Mentions.jsx'; 
+import { LinkedinLogo, GithubLogo, EnvelopeSimple } from '@phosphor-icons/react';
+
+// Vérifie que le chemin vers Mentions est correct (ici supposé dans ../pages/)
+import Mentions from './Mentions';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -15,26 +16,16 @@ export default function Footer() {
             <footer className="footer">
                 <div className="footer-container">
                     
-                    {/* Gauche : Copyright */}
+                    {/* Gauche : Copyright + Bouton Mentions */}
                     <div className="footer-left">
                         <p>
                             © {currentYear} <span>Tharshica.S</span> — Tous droits réservés.
                             <br />
                             
-                            {/* Lien Mentions Légales */}
+                            {/* Bouton qui ouvre la fenêtre */}
                             <button 
                                 onClick={() => setShowMentions(true)} 
-                                style={{
-                                    background: 'none', 
-                                    border: 'none', 
-                                    padding: 0, 
-                                    fontFamily: 'Sora', 
-                                    fontSize: '0.8rem', 
-                                    color: '#888', 
-                                    textDecoration: 'underline', 
-                                    cursor: 'pointer',
-                                    marginTop: '4px'
-                                }}
+                                className="mentions-btn"
                             >
                                 Mentions Légales
                             </button>
@@ -43,13 +34,13 @@ export default function Footer() {
 
                     {/* Droite : Réseaux Sociaux */}
                     <div className="footer-socials">
-                        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon">
+                        {/* LinkedIn */}
+                        <a href="https://linkedin.com/in/TON-PROFIL" target="_blank" rel="noreferrer" className="social-icon">
                             <LinkedinLogo size={24} weight="fill" />
                         </a>
-                        <a href="https://github.com" target="_blank" rel="noreferrer" className="social-icon">
-                            <GithubLogo size={24} weight="fill" />
-                        </a>
-                        <a href="mailto:contact@ramzi.dev" className="social-icon">
+
+                        {/* Email */}
+                        <a href="mailto:tharshica.s@gmail.com" className="social-icon">
                             <EnvelopeSimple size={24} weight="bold" />
                         </a>
                     </div>
@@ -57,7 +48,7 @@ export default function Footer() {
                 </div>
             </footer>
 
-            {/* Affiche le Pop-up si showMentions est vrai */}
+            {/* Affiche le Pop-up Mentions si showMentions est vrai */}
             {showMentions && (
                 <Mentions onClose={() => setShowMentions(false)} />
             )}

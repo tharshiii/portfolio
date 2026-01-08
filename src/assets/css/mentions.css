@@ -1,92 +1,99 @@
-/* src/assets/css/mentions.css */
-
-/* L'arrière-plan sombre */
+/* Fond sombre derrière le modal */
 .mentions-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(16, 70, 104, 0.4); /* Ton bleu en transparence */
     backdrop-filter: blur(5px);
-    z-index: 20000; /* Très haut pour passer au-dessus de tout */
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
 }
 
-/* La boîte blanche */
+/* La fenêtre elle-même */
 .mentions-modal {
     background: #fff;
     width: 100%;
     max-width: 700px;
-    max-height: 85vh; /* Hauteur max */
+    max-height: 85vh; /* Pour ne pas dépasser de l'écran */
     border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
     padding: 40px;
     position: relative;
-    overflow-y: auto; /* Permet de scroller le texte */
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    transform: scale(0.95);
-    animation: scaleIn 0.3s forwards;
+    overflow-y: auto; /* Scroll si trop long */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Typographie */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #305F7D;
+    transition: transform 0.2s;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+    color: #104668;
+}
+
 .mentions-title {
     font-family: "Instrument Serif", serif;
     font-size: 2.5rem;
+    color: #104668;
     margin-bottom: 30px;
-    color: #000;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding-bottom: 20px;
 }
 
 .mentions-section {
-    margin-bottom: 24px;
+    margin-bottom: 30px;
 }
 
-.mentions-subtitle {
+.mentions-section h3 {
     font-family: "Sora", sans-serif;
     font-size: 1.1rem;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 8px;
-}
-
-.mentions-text {
-    font-family: "Sora", sans-serif;
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-.mentions-link {
-    color: #000;
-    text-decoration: underline;
-    font-weight: 600;
-}
-
-/* Bouton fermer */
-.close-mentions {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #f0f0f0;
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
+    color: #305F7D;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.close-mentions:hover { background: #e0e0e0; }
+.mentions-section p, .mentions-section li {
+    font-family: "Sora", sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
 
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes scaleIn { to { transform: scale(1); } }
+.mentions-section ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.warning-text {
+    font-size: 0.85rem;
+    color: #e87c7c; /* Rouge doux */
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Scrollbar jolie pour le modal */
+.mentions-modal::-webkit-scrollbar {
+    width: 6px;
+}
+.mentions-modal::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}

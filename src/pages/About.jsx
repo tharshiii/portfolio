@@ -4,23 +4,23 @@ import {
     Student, Briefcase, Code, PaintBrush, Globe, MagicWand, 
     VideoCamera, PenNib, Kanban, 
     Medal, Lightbulb, GearSix, Pen, Users, User, MagnifyingGlass, ClipboardText,
-    ArrowUp, DownloadSimple, LinkedinLogo, GithubLogo, EnvelopeSimple 
+    ArrowUp, DownloadSimple, LinkedinLogo, EnvelopeSimple, Heart 
 } from '@phosphor-icons/react';
+import monCvFile from '../assets/cvtharshica.pdf';
 
 export default function About() {
     
-    // --- 1. LOGIQUE D'ANIMATION (Le secret pour que ça marche) ---
+    // --- 1. LOGIQUE D'ANIMATION ---
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        // On attend un tout petit peu (100ms) pour être sûr que l'écran est prêt
         const timer = setTimeout(() => {
             setIsLoaded(true);
         }, 100);
         return () => clearTimeout(timer);
     }, []);
 
-    // --- 2. LOGIQUE SCROLL TO TOP ---
+    // --- 2. SCROLL TO TOP ---
     const [showScroll, setShowScroll] = useState(false);
 
     useEffect(() => {
@@ -40,26 +40,30 @@ export default function About() {
     };
 
     return (
-        // On ajoute la classe "loaded" si l'état isLoaded est vrai
         <div className={`about-container ${isLoaded ? 'loaded' : ''}`}>
             
-            {/* Le titre a aussi une classe pour l'animer */}
-            <h1 className="about-title fade-element">Qui suis-je ?</h1>
+            <h1 className="about-title fade-element">Qui suis-je ?
+            </h1>
             
             <div className="bento-grid">
                 
-                {/* 1. BIO */}
+                {/* 1. BIO RAPIDE (Intro Factuelle) */}
                 <div className="bento-card card-bio fade-element" style={{ transitionDelay: '0.1s' }}>
                     <div className="bio-content">
                         <p className="bio-text">
-                            Hello ! Moi c'est <span className="bio-highlight">Tharshica</span>. 
-                            Étudiante en BUT MMI, je navigue à l'intersection du design créatif et du développement technique.
-                            <br/><br/>
-                            Passionnée par le numérique, je cherche constamment à apprendre de nouvelles technologies pour donner vie à des idées innovantes.
+                           Je suis <span className="bio-highlight">Tharshica SIVA ANANDAN</span>. 
+                           Étudiante en BUT MMI, je navigue à l'intersection du design créatif et de la communication digitale.
+                           <br/><br/>
+                           Passionnée par le numérique, je cherche constamment de nouvelles inspirations pour donner vie à des idées innovantes.
                         </p>
                         
                         <div className="bio-actions">
-                            <a href="/mon-cv.pdf" target="_blank" className="btn-primary">
+                            <a 
+                                href={monCvFile}            
+                                target="_blank" 
+                                rel="noopener noreferrer"   
+                                className="btn-primary"
+                            >
                                 <DownloadSimple size={20} weight="bold" />
                                 <span>Mon CV</span>
                             </a>
@@ -68,10 +72,7 @@ export default function About() {
                                 <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-btn" aria-label="LinkedIn">
                                     <LinkedinLogo size={24} />
                                 </a>
-                                <a href="https://github.com" target="_blank" rel="noreferrer" className="social-btn" aria-label="GitHub">
-                                    <GithubLogo size={24} />
-                                </a>
-                                <a href="mailto:ton-email@gmail.com" className="social-btn" aria-label="Email">
+                                <a href="mailto:contact@tharshica.com" className="social-btn" aria-label="Email">
                                     <EnvelopeSimple size={24} />
                                 </a>
                             </div>
@@ -79,7 +80,26 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 2. FORMATION */}
+                {/* --- 2. MON PARCOURS (Le Storytelling adapté) --- */}
+                <div className="bento-card card-story fade-element" style={{ transitionDelay: '0.15s', gridColumn: 'span 2' }}>
+                    <div className="card-header">
+                        <div className="card-icon"><Heart size={20} weight="fill" color="#e87c7c" /></div>
+                        <h2 className="bento-title">Mon histoire</h2>
+                    </div>
+                    <div className="story-content" style={{ padding: '0 10px' }}>
+                        
+                        <p style={{ fontFamily: 'Sora', lineHeight: '1.6', color: '#104668', marginBottom: '15px', fontSize: '1rem' }}>
+                            Immergée dans le numérique depuis toujours, j'ai grandi avec Internet, les réseaux sociaux et la culture web. Très vite, j'ai su que mon avenir se dessinerait dans ce vaste milieu.
+                        </p>
+                        
+                        <p style={{ fontFamily: 'Sora', lineHeight: '1.6', color: '#104668', fontSize: '1rem' }}>
+                            Mais c'est en arrivant en <strong>BUT MMI</strong> que j'ai eu mon véritable déclic. J'ai compris que ma place n'était pas derrière des lignes de code, mais dans la <strong>création visuelle</strong>. Ce que j'aime, c'est traduire une idée complexe en une interface claire. Aujourd'hui, je mets cette sensibilité au service de l'utilisateur pour créer des projets qui ont du sens.
+                        </p>
+                    
+                    </div>
+                </div>
+
+                {/* 3. FORMATION */}
                 <div className="bento-card card-formation fade-element" style={{ transitionDelay: '0.2s' }}>
                     <div className="card-header">
                         <div className="card-icon"><Student size={20} /></div>
@@ -97,7 +117,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 3. EXPÉRIENCE */}
+                {/* 4. EXPÉRIENCE */}
                 <div className="bento-card card-experience fade-element" style={{ transitionDelay: '0.3s' }}>
                     <div className="card-header">
                         <div className="card-icon"><Briefcase size={20} /></div>
@@ -111,11 +131,11 @@ export default function About() {
                     <div className="list-item">
                         <span className="item-date">2022 - Présent</span>
                         <h3 className="item-title">Projets Académiques</h3>
-                        <p className="item-place">Développement, UI Design</p>
+                        <p className="item-place">Design & Communication</p>
                     </div>
                 </div>
 
-                {/* 4. COMPÉTENCES */}
+                {/* 5. COMPÉTENCES */}
                 <div className="bento-card card-competences fade-element" style={{ transitionDelay: '0.4s' }}>
                     <div className="card-header">
                         <div className="card-icon"><Medal size={20} /></div>
@@ -133,8 +153,8 @@ export default function About() {
                         <div className="comp-item">
                             <Code size={32} className="comp-icon" weight="regular" />
                             <div className="comp-content">
-                                <span className="comp-title">Intégration & Dév Web</span>
-                                <p className="comp-desc">HTML, CSS, JavaScript, SQL et intégration sur CMS.</p>
+                                <span className="comp-title">Intégration Web</span>
+                                <p className="comp-desc">HTML, CSS et intégration sur CMS.</p>
                             </div>
                         </div>
                         <div className="comp-item">
@@ -168,7 +188,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 5. BOÎTE À OUTILS */}
+                {/* 6. BOÎTE À OUTILS */}
                 <div className="bento-card card-tools fade-element" style={{ transitionDelay: '0.5s' }}>
                     <div className="card-header">
                         <div className="card-icon"><MagicWand size={20} /></div>
@@ -206,7 +226,7 @@ export default function About() {
 
                 </div>
 
-                {/* 6. SOFT SKILLS */}
+                {/* 7. SOFT SKILLS */}
                 <div className="soft-skills-wrapper fade-element" style={{ transitionDelay: '0.6s' }}>
                     <h2 className="section-title-center">Soft-skills</h2>
                     

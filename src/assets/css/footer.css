@@ -5,12 +5,11 @@
     /* On s'assure qu'il est en bas */
     margin-top: auto; 
     padding: 40px 20px;
-
     
     /* Une ligne fine pour séparer du contenu */
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     
-    /* Fond légèrement teinté pour marquer la fin (optionnel) */
+    /* Fond légèrement teinté pour marquer la fin */
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
 }
@@ -31,6 +30,7 @@
     color: #666;
     margin: 0;
     text-align: left; /* Force l'alignement à gauche */
+    line-height: 1.5;
 }
 
 .footer-left span {
@@ -52,8 +52,26 @@
 }
 
 .social-icon:hover {
-    color: #000;
+    color: #104668; /* Bleu au survol */
     transform: translateY(-3px);
+}
+
+/* --- NOUVEAU : Style du bouton Mentions Légales --- */
+.mentions-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.85rem;
+    color: #888; /* Gris discret */
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: color 0.3s;
+}
+
+.mentions-btn:hover {
+    color: #104668; /* Devient bleu foncé au survol */
 }
 
 /* Responsive Mobile */

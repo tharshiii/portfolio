@@ -1,59 +1,82 @@
 import React from 'react';
 import '../assets/css/home.css';
 import { ArrowRight, DownloadSimple } from '@phosphor-icons/react';
+import monCvFile from '../assets/cvtharshica.pdf';
 
 export default function Home() {
     return (
         <div className="home-container">
             
             {/* --- 1. BLOC TEXTE (GAUCHE) --- */}
-    
             <div className="hero-content">
-         <div className="status-badge">
-            🚧 Portfolio en construction
-        </div>
+                
+                <div className="status-badge">
+                    🚧 Portfolio en construction
+                </div>
+
                 <h1 className="hero-title">
                     Tharshica <br/>
                     <span style={{fontStyle: 'italic'}}>SIVA ANANDAN !</span>
                 </h1>
 
+                {/* MODIF ICI : Titre adapté à ton profil Design & Com */}
+                <h2 className="hero-subtitle" style={{ 
+                    color: '#305F7D', 
+                    margin: '15px 0', 
+                    fontSize: '1.5rem', 
+                    fontFamily: '"Instrument Serif", serif' 
+                }}>
+                    Designer UI/UX & Communication Digitale
+                </h2>
+
+                {/* Rappel du cadre académique (Obligatoire pour les profs) */}
                 <p className="hero-text">
-                    <strong>Un seul profil, plusieurs expertises.</strong><br/>
-                    Passionnée et créative, je transforme les besoins utilisateurs en expériences numériques. 
+                    <strong>Actuellement en BUT2 MMI à l'IUT de Bobigny.</strong><br/>
+                   Passionnée et créative, je transforme les besoins utilisateurs en expériences numériques. 
                     Webdesign, Audiovisuel et Communication sont mes terrains de jeu.
                 </p>
 
+                {/* Date précise du stage */}
                 <div className="status-box">
-                À la recherche d'un stage de 12 semaines à partir d'avril.
+                À la recherche d'un stage de <strong>12 semaines</strong> à partir du <strong>7 avril 2026</strong>.
                 </div>
 
                 <div className="hero-buttons">
-                    <a href="#works" className="hero-btn">
-                        Voir mes réalisations
-                        <ArrowRight size={18} weight="bold" />
+                    
+                    {/* Bouton 1 : Voir mes réalisations */}
+                    <a href="#projets" className="hero-btn">
+                        Voir mes réalisations 
+                        <ArrowRight size={20} weight="bold" style={{ marginLeft: '8px' }} />
                     </a>
 
-                    <a href="/cv.pdf" download className="secondary-btn">
-                        Mon CV
-                        <DownloadSimple size={18} weight="bold" />
+                    {/* Bouton 2 : Mon CV */}
+                    <a 
+                        href={monCvFile} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="secondary-btn"
+                    >
+                        Mon CV 
+                        <DownloadSimple size={20} weight="bold" style={{ marginLeft: '8px' }} />
                     </a>
-                </div>
-                 </div> 
-                                {/* Fin du bloc hero-content */}
 
-                            {/* --- BLOC IMAGE AVEC FLEURS --- */}
-                    <div className="hero-image-wrapper">
-                        
-                        {/* 1. Les fleurs décoratives (Ajoute cette ligne) */}
-                        <img src="/img/fleurs.png" alt="" className="flower-decoration" />
-
-                        {/* 2. Ta photo (Reste inchangée) */}
-                        <img 
-                            src="/img/portrait.png" 
-                            alt="Portrait de Tharshica" 
-                            className="hero-img" 
-                        />
                 </div>
+            </div> 
+            {/* Fin du bloc hero-content */}
+
+            {/* --- 2. BLOC IMAGE (DROITE) --- */}
+            <div className="hero-image-wrapper">
+                
+                {/* Les fleurs décoratives */}
+                <img src="/img/fleurs.png" alt="" className="flower-decoration" />
+
+                {/* Ta photo */}
+                <img 
+                    src="/img/portrait.png" 
+                    alt="Portrait de Tharshica" 
+                    className="hero-img" 
+                />
+            </div>
 
         </div>
     );

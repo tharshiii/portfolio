@@ -417,31 +417,40 @@
     transform: translateY(0);
 }
 
-/* --- RESPONSIVE MOBILE --- */
+/* --- DANS src/assets/css/about.css (tout en bas) --- */
 @media (max-width: 900px) {
+    
+    .about-container {
+        padding: 20px;
+        width: 100%;
+        overflow: hidden; /* Sécurité supplémentaire */
+    }
+
+    /* On transforme la grille en colonne simple */
     .bento-grid {
-        grid-template-columns: 1fr; 
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     }
-    .card-bio, .card-tools, .card-competences, .card-formation, .card-experience, .soft-skills-wrapper {
-        grid-column: span 1;
+
+    /* On force toutes les cartes à prendre toute la largeur */
+    .bento-card {
+        width: 100% !important;
+        grid-column: auto !important;
+        padding: 20px;
     }
-    .competences-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    .soft-card {
-        width: calc(50% - 15px);
-    }
-    .tools-grid {
-        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-        gap: 8px;
-    }
-}
-@media (max-width: 500px) {
-    .soft-card {
+
+    /* Correction spécifique pour le bug du screen (Texte vs Icônes) */
+    .about-content, .skills-grid, .competences-grid {
+        display: flex;
+        flex-direction: column;
         width: 100%;
     }
-    .about-title {
-        font-size: 2.5rem;
+
+    /* Les icônes d'outils (HTML, React...) en plus petit */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 icônes par ligne max */
+        gap: 10px;
     }
 }
