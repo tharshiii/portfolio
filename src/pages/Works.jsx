@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+// Remplace la première ligne par celle-ci :
+import React, { useState, useEffect } from 'react';
 import '../assets/css/works.css';
 import { X, ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import ScrollFloat from '../components/ScrollFloat';
+
 
 export default function Works() {
     
@@ -236,22 +238,38 @@ export default function Works() {
         activeFilter === "Tous" ? true : project.category.toUpperCase() === activeFilter.toUpperCase()
     );
 
-    // --- 3. GESTION DU POP-UP & SLIDER ---
+// --- 3. GESTION DU POP-UP & SLIDER ---
     const [selectedProject, setSelectedProject] = useState(null);
     const [currentSlide, setCurrentSlide] = useState(0); 
+
+    // === C'EST ICI LA CORRECTION MAGIQUE ===
+    // Ce bloc surveille si la modale est ouverte ou fermée
+    useEffect(() => {
+        if (selectedProject) {
+            // Si ouvert : on bloque le scroll
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Si fermé : on LIBÈRE le scroll proprement ('unset' est vital pour le sticky)
+            document.body.style.overflow = 'unset';
+        }
+        
+        // Sécurité si on quitte la page brusquement
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [selectedProject]);
+    // =======================================
 
     const openModal = (project) => {
         setSelectedProject(project);
         setCurrentSlide(0); 
-        document.body.style.overflow = 'hidden'; 
+        // J'AI ENLEVÉ LA LIGNE 'document.body...' ICI CAR useEffect S'EN OCCUPE MTN
     };
 
     const closeModal = () => {
         setSelectedProject(null);
-        document.body.style.overflow = 'auto';
+        // J'AI ENLEVÉ LA LIGNE 'document.body...' ICI AUSSI
     };
 
-    // Fonctions pour changer d'image
+    // Fonctions pour changer d'image (Pas de changement ici)
     const nextSlide = (e) => {
         e.stopPropagation();
         const total = (selectedProject.images || [selectedProject.image]).length;

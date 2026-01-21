@@ -187,16 +187,17 @@
     animation: fadeIn 0.3s forwards;
 }
 
+/* --- LE POP-UP (MODAL) --- */
 .modal-content {
     background: var(--w-white);
     width: 100%;
     
-    /* --- NOUVELLE TAILLE RÉDUITE --- */
-    max-width: 1000px;  /* Plus étroit (C'était 1200px) */
+    /* MODIFICATION 1 : LARGEUR (Plus large) */
+    max-width: 1200px;  
     
-    height: 60vh;       /* Moins haut (C'était 85vh) */
-    max-height: 60vh;   /* On bloque la hauteur ici */
-    /* ------------------------------- */
+    /* MODIFICATION 2 : HAUTEUR (Plus grand) */
+    height: 85vh;       
+    max-height: 85vh;   
     
     border-radius: 20px;
     display: flex;
@@ -208,20 +209,36 @@
 /* --- COLONNE GAUCHE (SLIDER) --- */
 
 /* COLONNE GAUCHE (SLIDER) */
+/* 1. COLONNE GAUCHE (SLIDER / IMAGE) */
 .modal-image-col { 
-    flex: 1.5; 
+    /* AVANT : flex: 1.5; (Trop large) */
     
-    /* MODIFICATION : On enlève le noir, on met transparent ou blanc */
+    /* MAINTENANT : On réduit la largeur */
+    flex: 0.9; /* L'image prendra environ 40-45% de la largeur */
+    
     background: transparent; 
-    
     position: relative; 
     display: flex;
     justify-content: center;
     align-items: center;
-    
     height: 100%; 
     overflow: hidden; 
     padding: 0; 
+}
+
+/* ... (Pas de changement sur .slider-img) ... */
+
+
+/* 2. COLONNE DROITE (TEXTE) */
+.modal-text-col { 
+    /* AVANT : flex: 1; */
+    
+    /* MAINTENANT : On lui donne plus d'espace */
+    flex: 1.1; /* Le texte prendra environ 55-60% de la largeur */
+    
+    padding: 40px; 
+    overflow-y: auto;  
+    max-height: 100%; 
 }
 
 /* L'IMAGE DU SLIDER */
@@ -279,16 +296,6 @@
     padding: 5px 15px;
     border-radius: 8px;
     backdrop-filter: blur(5px);
-}
-
-/* --- COLONNE DROITE (TEXTE) --- */
-.modal-text-col { 
-    flex: 1; 
-    padding: 40px; 
-    
-    /* Le scroll se fait uniquement ici si le texte est long */
-    overflow-y: auto;  
-    max-height: 100%; /* Utilise toute la hauteur disponible */
 }
 
 .modal-text-col::-webkit-scrollbar { width: 6px; }
@@ -368,24 +375,111 @@
     to { transform: scale(1); opacity: 1; } 
 }
 
-/* --- DANS src/assets/css/works.css (tout en bas) --- */
 @media (max-width: 900px) {
+    
+    /* 1. LA BOÎTE PRINCIPALE */
     .modal-content {
-        width: 95%;        /* Laisse une petite marge sur les côtés */
-        max-height: 85vh;  /* Évite que ça soit trop haut */
-        padding: 20px;     /* Moins de padding interne */
-        flex-direction: column;
+        width: 95%;         /* Largeur presque totale */
+        
+        /* HAUTEUR AGRANDIE */
+        height: 90vh;       /* Prend 90% de la hauteur de l'écran */
+        max-height: 90vh;   /* On force la hauteur */
+        
+        /* LAYOUT */
+        flex-direction: column; /* Image en haut, texte en bas */
+        padding: 0;         /* On retire le padding global pour que l'image colle aux bords */
+        
+        /* SCROLL */
+        overflow-y: auto;   /* INDISPENSABLE : Permet de scroller le texte si c'est trop long */
+        overflow-x: hidden;
     }
 
-    .modal-image-col, .modal-text-col {
-        width: 100%;
-    }
-
+    /* 2. COLONNE IMAGE (Haut) */
     .modal-image-col {
-        height: 200px; /* Hauteur fixe pour l'image sur mobile */
+        width: 100% !important;
+        
+        /* ON PASSE DE 280px À 200px */
+        height: 200px !important;      
+        min-height: 200px !important;  
+        max-height: 200px !important;  
+        
+        /* IMPORTANT : On change le flex aussi */
+        flex: 0 0 200px !important;    
     }
     
     .slider-img {
-        object-fit: cover; /* L'image remplit bien la zone */
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* 3. COLONNE TEXTE (Bas) */
+    .modal-text-col {
+        width: 100%;
+        padding: 20px 20px 40px 20px; /* Espace interne pour le texte (plus grand en bas) */
+        height: auto;       /* S'adapte au contenu */
+    }
+
+    /* 4. BOUTON FERMER (Ajustement) */
+    /* On le met sur l'image avec un petit fond pour qu'on le voie bien */
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.5); /* Petit fond noir transparent */
+        color: white;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        border: none;
+    }
+    
+    /* On enlève l'effet hover sur mobile qui peut être gênant */
+    .close-btn:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+        transform: none;
     }
 }
+
+@media (max-width: 900px) {
+    
+    /* ... ton code existant pour .modal-content et .modal-image-col ... */
+
+    /* 1. LE CONTENEUR DES BOUTONS */
+    .slider-controls {
+        gap: 8px !important;      /* Rapproche les éléments */
+        bottom: 15px !important;  /* Ajuste la position par rapport au bas de l'image */
+    }
+
+    /* 2. LES BOUTONS (Le rond blanc) */
+    .slider-btn {
+        width: 32px !important;   /* Plus petit diamètre */
+        height: 32px !important;
+        padding: 0 !important;    /* Enlève le padding pour bien centrer */
+        
+        /* Flexbox pour centrer parfaitement la petite flèche */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 3. LES FLÈCHES (L'icône SVG à l'intérieur) */
+    .slider-btn svg {
+        width: 14px !important;   /* La flèche devient toute petite */
+        height: 14px !important;
+    }
+
+    /* 4. LE COMPTEUR (Le texte 1 / 2) */
+    .slider-counter {
+        font-size: 12px !important;    /* Texte plus petit */
+        padding: 0 12px !important;    /* Pilule moins large */
+        height: 32px !important;       /* Même hauteur que les boutons */
+        
+        /* Centrage */
+        display: flex;
+        align-items: center;
+    }
+}
+

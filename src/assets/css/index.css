@@ -1,5 +1,6 @@
-
-/* 1. DÉFINITION DES VARIABLES */
+/* =========================================
+   1. VARIABLES & THÈMES
+   ========================================= */
 :root {
     /* --- MODE CLAIR --- */
     --bg-main: #f4f4f4; 
@@ -19,11 +20,11 @@
 
 /* --- MODE SOMBRE --- */
 [data-theme="dark"] {
-    --bg-main: #0a0a0a; /* Couleur de fond noire qui va se mélanger à l'image */
+    --bg-main: #0a0a0a; 
     --text-main: #ffffff;
     --text-secondary: #a0a0a0;
     
-    --card-bg: #161616; /* Gris très foncé pour les cartes */
+    --card-bg: #161616;
     --card-border: rgba(255, 255, 255, 0.1);
     --card-shadow: rgba(0, 0, 0, 0.5);
     
@@ -33,27 +34,36 @@
     --input-bg: #1f1f1f;
     --input-border: #333333;
     
-    /* ASTUCE : En mode sombre, on mélange le noir avec ton image */
-    /* Cela assombrit l'image automatiquement sans la supprimer ! */
     background-blend-mode: overlay; 
 }
 
-/* 2. APPLICATION GLOBALE */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* =========================================
+   2. RESET & CONFIGURATION GLOBALE
+   ========================================= */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; /* Indispensable pour éviter le débordement */
+    /* outline: 1px solid red !important; <--- J'ai enlevé le mode debug rouge */
+}
 
 html {
-    scroll-behavior: smooth;
-    scrollbar-width: none;
     width: 100%;
+    max-width: 100%; /* Sécurité supplémentaire */
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Cache la scrollbar (Firefox) */
+    
+    /* C'est ICI qu'on coupe le scroll horizontal */
+    overflow-x: hidden; 
 }
 
 body {
-    /* On garde ta couleur de fond variable */
+    width: 100%;
+    max-width: 100%; /* Force le contenu à ne jamais dépasser l'écran */
+    
+    /* Configuration du fond */
     background-color: var(--bg-main);
-    
-    /* ON GARDE TON IMAGE ICI */
     background-image: url("/img/fond.png");
-    
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -62,6 +72,29 @@ body {
     font-family: sans-serif;
     color: var(--text-main); 
     transition: background-color 0.3s ease, color 0.3s ease;
+    
+    /* Configuration du curseur */
+    cursor: none; 
+    
+    /* GESTION DU SCROLL & STICKY */
+    position: relative; /* Aide le sticky à s'ancrer */
+    overflow-x: clip;   /* Coupe ce qui dépasse horizontalement sans casser le vertical */
+    /* Note : Si 'clip' bug sur ton navigateur, le html overflow-x au dessus prend le relais */
+}
+
+/* Cache le curseur sur les éléments cliquables aussi */
+a, button {
+    cursor: none;
+}
+
+/* =========================================
+   3. STRUCTURE DES PAGES (AppMain)
+   ========================================= */
+.AppMain { 
+    position: relative; 
+    z-index: 1; 
+    width: 100%;
+    overflow-x: hidden; /* Triple sécurité pour le contenu principal */
 }
 
 .AppMain > section {
@@ -71,20 +104,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    /* Padding sécurisé */
     padding: 140px 20px 100px 20px;
 }
 
+/* Correction spécifique pour la section contact */
 #contact {
     padding-top: 40px !important;
-    padding-bottom: 1000 !important;
+    padding-bottom: 100px !important; /* J'ai corrigé "1000" qui semblait être une erreur de frappe */
     margin-bottom: 0 !important;
 }
 
-.AppMain { position: relative; z-index: 1; }
-body, a, button {
-    cursor: none; /* Cache le curseur système */
-}
-/* Nouveau style pour le badge au-dessus du prénom */
+/* =========================================
+   4. COMPOSANTS (Badge, etc.)
+   ========================================= */
 .status-badge {
     display: inline-block;
     width: fit-content;
@@ -93,14 +127,13 @@ body, a, button {
     color: #104668;
     border: 1px solid rgba(16, 70, 104, 0.2);
     
-    /* --- CE QUI CHANGE POUR AGRANDIR --- */
-    padding: 10px 24px;   /* Plus d'espace autour (Haut/Bas  Gauche/Droite) */
-    font-size: 1rem;      /* Texte plus grand (avant c'était 0.8rem) */
-    border-radius: 50px;  /* Garde la forme arrondie */
+    padding: 10px 24px;
+    font-size: 1rem;
+    border-radius: 50px;
     
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px; /* Espacement des lettres un peu plus large */
+    letter-spacing: 1.5px;
     
-    margin-bottom: 25px;  /* Un peu plus d'espace sous le badge */
+    margin-bottom: 25px;
 }

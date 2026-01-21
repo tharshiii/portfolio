@@ -60,34 +60,38 @@ export default function Navbar() {
 
         {/* CONTENEUR LIENS + BOUTONS (Caché sur mobile sauf si open) */}
         <div className={`nav-content ${isMenuOpen ? 'active' : ''}`}>
-            
-            {/* LIENS (Centre) */}
-            <div className="nav-center">
-              <a 
-                href="#about" 
-                className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Qui suis-je ?
-              </a>
-              <a 
-                href="#works" 
-                className={`nav-link ${activeSection === 'works' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Projets
-              </a>
-            </div>
+    
+    {/* LIENS (Centre) */}
+    <div className="nav-center">
+        <a 
+            href="#about" 
+            className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+            onClick={closeMenu}
+        >
+            Qui suis-je ?
+        </a>
+        <a 
+            href="#works" 
+            className={`nav-link ${activeSection === 'works' ? 'active' : ''}`}
+            onClick={closeMenu}
+        >
+            Projets
+        </a>
+    </div>
 
-            {/* BOUTONS (Droite) */}
-            <div className="nav-right">
-              {/* 1. Bouton CONTACT (avant le thème) */}
-              <a href="#contact" className="nav-link">
-                Me contacter
-              </a>
-            </div>
+    {/* BOUTONS (Droite) */}
+    <div className="nav-right">
+        {/* 1. Bouton CONTACT */}
+        <a 
+            href="#contact" 
+            className="nav-link"
+            onClick={closeMenu} /* <-- C'est ça qui manquait ! */
+        >
+            Me contacter
+        </a>
+    </div>
 
-        </div>
+</div>
       </div>
     </nav>
   );
