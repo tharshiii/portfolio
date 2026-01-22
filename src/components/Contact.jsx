@@ -21,9 +21,9 @@ export default function Contact() {
         // N'oublie pas de remettre tes vraies clés EmailJS ici
         emailjs.sendForm(
             'service_5cvc2rc',    // Ton Service ID
-            'VOTRE_TEMPLATE_ID',  // Ton Template ID
+            'template_bixx4ib',  // Ton Template ID
             form.current,
-            'VOTRE_PUBLIC_KEY'    // Ta Public Key
+            '6XMhYB6qyJEmfwciR'    // Ta Public Key
         )
         .then((result) => {
             console.log(result.text);
@@ -93,12 +93,12 @@ export default function Contact() {
                             <div className="form-row">
                                 <div className="form-group">
                                     <label>Nom complet</label>
-                                    <input type="text" name="user_name" placeholder="Votre nom" required />
+                                    <input type="text" name= "name" placeholder="Votre nom" required />
                                 </div>
 
                                 <div className="form-group">
                                     <label>Email</label>
-                                    <input type="email" name="user_email" placeholder="votre@email.com" required />
+                                    <input type="email" name= "email" placeholder="votre@email.com" required />
                                 </div>
                             </div>
                             {/* --------------------------------------------------------- */}

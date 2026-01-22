@@ -203,7 +203,6 @@ export default function About() {
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Adobe_InDesign_CC_icon.svg" alt="InDesign" className="tool-img" /><span className="tool-name">InDesign</span></div>
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere" className="tool-img" /><span className="tool-name">Premiere</span></div>
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/DaVinci_Resolve_12_logo.png" alt="DaVinci" className="tool-img" /><span className="tool-name">DaVinci</span></div>
-                        <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Sketch_Logo.svg" alt="Sketch" className="tool-img" /><span className="tool-name">Sketch</span></div>
                     </div>
 
                     <h3 className="tools-category">💻 Développement</h3>

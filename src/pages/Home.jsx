@@ -9,10 +9,6 @@ export default function Home() {
             
             {/* --- 1. BLOC TEXTE (GAUCHE) --- */}
             <div className="hero-content">
-                
-                <div className="status-badge">
-                    🚧 Portfolio en construction
-                </div>
 
                 <h1 className="hero-title">
                     Tharshica <br/>
