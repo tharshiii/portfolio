@@ -1,3 +1,5 @@
+/* src/assets/css/index.css */
+
 /* =========================================
    1. VARIABLES & THÈMES
    ========================================= */
@@ -43,46 +45,41 @@
 * { 
     margin: 0; 
     padding: 0; 
-    box-sizing: border-box; /* Indispensable pour éviter le débordement */
-    /* outline: 1px solid red !important; <--- J'ai enlevé le mode debug rouge */
+    box-sizing: border-box; 
 }
 
 html {
     width: 100%;
-    max-width: 100%; /* Sécurité supplémentaire */
+    max-width: 100%; 
     scroll-behavior: smooth;
     scrollbar-width: none; /* Cache la scrollbar (Firefox) */
-    
-    /* C'est ICI qu'on coupe le scroll horizontal */
     overflow-x: hidden; 
 }
 
 body {
     width: 100%;
-    max-width: 100%; /* Force le contenu à ne jamais dépasser l'écran */
+    max-width: 100%; 
     
-    /* Configuration du fond */
+    /* --- CONFIGURATION DU FOND (Desktop par défaut) --- */
     background-color: var(--bg-main);
-    background-image: url("/img/fond.png");
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url("/img/fond.png"); /* Ton image Desktop */
+    
+    /* PARAMÈTRES POUR ÉVITER LA RÉPÉTITION */
+    background-attachment: fixed;   /* Le fond reste fixe au scroll */
+    background-size: cover;         /* Couvre tout l'écran */
+    background-position: center;    /* Centre l'image */
+    background-repeat: no-repeat;   /* Empêche le carrelage */
     
     font-family: sans-serif;
     color: var(--text-main); 
     transition: background-color 0.3s ease, color 0.3s ease;
     
-    /* Configuration du curseur */
     cursor: none; 
-    
-    /* GESTION DU SCROLL & STICKY */
-    position: relative; /* Aide le sticky à s'ancrer */
-    overflow-x: clip;   /* Coupe ce qui dépasse horizontalement sans casser le vertical */
-    /* Note : Si 'clip' bug sur ton navigateur, le html overflow-x au dessus prend le relais */
+    position: relative; 
+    overflow-x: clip;   
 }
 
-/* Cache le curseur sur les éléments cliquables aussi */
+/* Cache le curseur sur les éléments cliquables */
 a, button {
     cursor: none;
 }
@@ -94,7 +91,7 @@ a, button {
     position: relative; 
     z-index: 1; 
     width: 100%;
-    overflow-x: hidden; /* Triple sécurité pour le contenu principal */
+    overflow-x: hidden; 
 }
 
 .AppMain > section {
@@ -104,15 +101,13 @@ a, button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    /* Padding sécurisé */
     padding: 140px 20px 100px 20px;
 }
 
 /* Correction spécifique pour la section contact */
 #contact {
     padding-top: 40px !important;
-    padding-bottom: 100px !important; /* J'ai corrigé "1000" qui semblait être une erreur de frappe */
+    padding-bottom: 100px !important; 
     margin-bottom: 0 !important;
 }
 
@@ -122,18 +117,32 @@ a, button {
 .status-badge {
     display: inline-block;
     width: fit-content;
-    
     background-color: rgba(16, 70, 104, 0.1);
     color: #104668;
     border: 1px solid rgba(16, 70, 104, 0.2);
-    
     padding: 10px 24px;
     font-size: 1rem;
     border-radius: 50px;
-    
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    
     margin-bottom: 25px;
+}
+
+/* =========================================
+   5. FOND SPÉCIFIQUE MOBILE (< 900px)
+   ========================================= */
+@media (max-width: 900px) {
+    body {
+        /* On force le changement d'image avec !important */
+        background-image: url('/img/fondmobile.png') !important; 
+
+        /* On force les paramètres de taille et position */
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        
+        /* 'scroll' est mieux pour mobile */
+        background-attachment: scroll !important; 
+    }
 }
