@@ -1,9 +1,8 @@
-// Remplace la première ligne par celle-ci :
 import React, { useState, useEffect } from 'react';
 import '../assets/css/works.css';
-import { X, ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import ScrollFloat from '../components/ScrollFloat';
-
+// J'ai regroupé tes imports d'icônes ici (Globe était manquant dans la première ligne)
+import { X, ArrowLeft, ArrowRight, Globe } from '@phosphor-icons/react';
 
 export default function Works() {
     
@@ -41,6 +40,7 @@ export default function Works() {
             id: 3,
             title: "Titeuf Fan Page",
             category: "WEB",
+            link: "https://bd-titeuf.jimdofree.com",
             displayCategory: "CMS • PROJET ACADÉMIQUE",
             description: "Site vitrine immersif réalisé via Jimdo.",
             fullDescription: `
@@ -204,6 +204,7 @@ export default function Works() {
             id: 8,
             title: "Sana terra",
             category: "WEB",
+            link: "https://bd-titeuf.jimdofree.com",
             displayCategory: "WORDPRESS & BRANDING • PROJET PERSONNEL",
             description: "Création de site vitrine de A à Z (Branding + Dev).",
             fullDescription: `
@@ -238,38 +239,28 @@ export default function Works() {
         activeFilter === "Tous" ? true : project.category.toUpperCase() === activeFilter.toUpperCase()
     );
 
-// --- 3. GESTION DU POP-UP & SLIDER ---
+    // --- 3. GESTION DU POP-UP & SLIDER ---
     const [selectedProject, setSelectedProject] = useState(null);
     const [currentSlide, setCurrentSlide] = useState(0); 
 
-    // === C'EST ICI LA CORRECTION MAGIQUE ===
-    // Ce bloc surveille si la modale est ouverte ou fermée
     useEffect(() => {
         if (selectedProject) {
-            // Si ouvert : on bloque le scroll
             document.body.style.overflow = 'hidden';
         } else {
-            // Si fermé : on LIBÈRE le scroll proprement ('unset' est vital pour le sticky)
             document.body.style.overflow = 'unset';
         }
-        
-        // Sécurité si on quitte la page brusquement
         return () => { document.body.style.overflow = 'unset'; };
     }, [selectedProject]);
-    // =======================================
 
     const openModal = (project) => {
         setSelectedProject(project);
         setCurrentSlide(0); 
-        // J'AI ENLEVÉ LA LIGNE 'document.body...' ICI CAR useEffect S'EN OCCUPE MTN
     };
 
     const closeModal = () => {
         setSelectedProject(null);
-        // J'AI ENLEVÉ LA LIGNE 'document.body...' ICI AUSSI
     };
 
-    // Fonctions pour changer d'image (Pas de changement ici)
     const nextSlide = (e) => {
         e.stopPropagation();
         const total = (selectedProject.images || [selectedProject.image]).length;
@@ -394,11 +385,24 @@ export default function Works() {
                                     <div className="modal-tags">
                                         {selectedProject.tags.map((tag, i) => <span key={i} className="modal-tag">{tag}</span>)}
                                     </div>
+
+                                    {/* --- AJOUT DU BOUTON ICI --- */}
+                                    {selectedProject.link && (
+                                        <a 
+                                            href={selectedProject.link} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            className="site-link-btn"
+                                        >
+                                            <Globe size={20} weight="bold" />
+                                            Voir le site
+                                        </a>
+                                    )}
+                                    {/* --------------------------- */}
                                 </div>
                             </div>
 
                             {/* === BLOC 2 : DESCRIPTION DÉTAILLÉE === */}
-                            {/* Ajout d'une bordure fine pour séparer visuellement */}
                             <div 
                                 className="modal-desc intro" 
                                 dangerouslySetInnerHTML={{ __html: selectedProject.fullDescription }} 

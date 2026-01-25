@@ -116,7 +116,7 @@ export default function About() {
                             <Code size={32} className="comp-icon" weight="regular" />
                             <div className="comp-content">
                                 <span className="comp-title">Intégration Web</span>
-                                <p className="comp-desc">HTML, CSS et intégration sur CMS.</p>
+                                <p className="comp-desc">HTML, CSS, React et intégration sur CMS.</p>
                             </div>
                         </div>
                         <div className="comp-item">
