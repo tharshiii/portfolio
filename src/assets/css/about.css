@@ -12,14 +12,10 @@
 
     /* --- EFFET GLASS (SANS OMBRE) --- */
     --glass-bg: rgba(255, 255, 255, 0.50); 
-    --glass-border: 1px solid rgba(255, 255, 255, 0.5); /* Bordure un peu plus visible pour délimiter */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.5);
     --glass-blur: blur(20px);
     
-    /* SUPPRESSION DE L'OMBRE */
     --glass-shadow: none; 
-    
-    --btn-bg: var(--c-petrol);
-    --btn-text: var(--c-white);
     
     --text-main: var(--c-dark-blue);
     --text-secondary: var(--c-petrol);
@@ -50,7 +46,7 @@
     grid-auto-rows: min-content; 
 }
 
-/* --- CARTE (SANS OMBRE) --- */
+/* --- CARTE BASE (Standard) --- */
 .bento-card {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -58,10 +54,7 @@
     border: var(--glass-border);
     border-radius: 24px;
     padding: 32px;
-    
-    /* Pas d'ombre ici */
     box-shadow: none; 
-    
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, background 0.3s, border-color 0.3s;
@@ -70,7 +63,6 @@
 .bento-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.35);
-    /* Juste la bordure qui devient plus blanche au survol */
     border-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -98,89 +90,6 @@
     margin: 0;
     color: var(--text-main);
     text-shadow: 0 1px 1px rgba(255,255,255,0.4);
-}
-
-/* --- BIO --- */
-.card-bio {
-    grid-column: span 2; 
-    text-align: center;
-    padding: 40px;
-}
-.bio-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-.bio-text {
-    font-family: "Sora", sans-serif;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--c-dark-blue);
-    max-width: 800px;
-    margin: 0 auto;
-    font-weight: 500;
-}
-.bio-highlight {
-    color: var(--c-petrol);
-    font-weight: 800;
-    font-style: italic;
-}
-
-/* Actions Bio */
-.bio-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap; 
-    justify-content: center;
-}
-.btn-primary {
-    background-color: var(--c-petrol);
-    color: var(--c-white);
-    padding: 12px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: "Sora", sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    border: 2px solid var(--c-petrol);
-}
-.btn-primary:hover {
-    background-color: var(--c-dark-blue);
-    border-color: var(--c-dark-blue);
-    transform: translateY(-2px);
-}
-
-/* Boutons réseaux sociaux */
-.social-links { display: flex; gap: 12px; }
-.social-btn {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    
-    background-color: rgba(255, 255, 255, 0.3);
-    color: var(--c-petrol);
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    transition: all 0.3s ease;
-    text-decoration: none;
-
-    /* --- MODIFICATION ICI : Contour visible --- */
-    border: 2px solid var(--c-petrol); /* Contour bleu solide de 2px */
-}
-.social-btn:hover {
-    background-color: var(--c-petrol);
-    border-color: var(--c-petrol);
-    color: var(--c-white);
-    transform: translateY(-3px);
 }
 
 /* --- FORMATION / EXPERIENCE --- */
@@ -264,112 +173,153 @@
     font-weight: 500;
 }
 
-/* --- OUTILS --- */
+/* =========================================
+   VERSION COMPACTE : BOÎTE À OUTILS
+   ========================================= */
 .card-tools {
     grid-column: span 2;
-    padding: 24px; 
+    padding: 24px;
 }
+
 .tools-category {
-    font-family: "Sora", sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--c-petrol);
-    margin-top: 24px;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding-bottom: 6px;
+    font-family: "Instrument Serif", serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--c-dark-blue);
+    margin-top: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tools-category::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(48, 95, 125, 0.2);
 }
 .tools-category:first-of-type { margin-top: 0; }
+
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); 
-    gap: 16px; 
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); 
+    gap: 12px;
+    margin-bottom: 10px;
 }
+
 .tool-item {
-    background: rgba(59, 144, 187, 0.145);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 16px;
-    padding: 16px 8px; 
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 12px 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    gap: 6px;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: default;
 }
+
 .tool-item:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.6);
-    border-color: var(--c-white);
+    transform: translateY(-3px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: var(--c-petrol);
+    box-shadow: 0 4px 10px rgba(48, 95, 125, 0.1);
 }
+
 .tool-img {
-    width: 32px; 
+    width: 32px;
     height: 32px;
     object-fit: contain;
-    margin-bottom: 8px;
+    transition: transform 0.3s ease;
 }
+
+.tool-item:hover .tool-img {
+    transform: scale(1.1);
+}
+
 .tool-name {
     font-family: "Sora", sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--c-petrol);
     text-align: center;
+    line-height: 1.1;
 }
 
-/* --- SOFT SKILLS --- */
+/* =========================================
+   SOFT SKILLS : BULLES STRICTEMENT IDENTIQUES
+   ========================================= */
 .soft-skills-wrapper {
     grid-column: span 2; 
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 .section-title-center {
     font-family: "Instrument Serif", serif;
     font-size: 2.2rem;
     text-align: center;
     color: var(--c-dark-blue);
-    margin-bottom: 24px;
+    margin-bottom: 30px;
 }
+
+/* Grille en Flexbox centrée */
 .soft-skills-grid {
     display: flex;             
     flex-wrap: wrap;           
     justify-content: center;   
-    gap: 20px;
+    gap: 16px; 
+    max-width: 1000px;
+    margin: 0 auto;
 }
+
+/* Le Badge (Bulle) avec DIMENSIONS FIXES */
 .soft-card {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: var(--glass-border);
-    /* Pas d'ombre ici non plus */
     box-shadow: none;
     
-    border-radius: 20px;
-    padding: 24px;
-    width: calc(25% - 20px); 
-    min-width: 180px; 
+    border-radius: 50px; 
+    padding: 0 20px; /* Padding latéral seulement, la hauteur est gérée par height */
+    
+    /* --- TAILLE STRICTEMENT IDENTIQUE --- */
     display: flex;
-    flex-direction: column;
+    flex-direction: row; 
     align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, background 0.3s;
+    justify-content: center; /* Centre parfaitement le contenu */
+    
+    width: 210px;  /* Largeur fixe */
+    height: 55px;  /* Hauteur fixe */
+    /* ------------------------------------ */
+    
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: default;
 }
+
 .soft-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.4);
-    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px) scale(1.05);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--c-petrol);
+    box-shadow: 0 4px 15px rgba(48, 95, 125, 0.15);
 }
+
 .soft-icon {
-    color: var(--c-secondary); 
-    margin-bottom: 12px;
+    color: var(--c-petrol); 
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0;
+    margin-right: 12px; /* Espace stable entre icône et texte */
 }
+
 .soft-name {
     font-family: "Sora", sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: var(--c-dark-blue);
-    text-align: center;
+    white-space: nowrap;
 }
 
 /* --- SCROLL TOP --- */
@@ -386,7 +336,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: none; /* Pas d'ombre sur le bouton non plus */
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
@@ -403,9 +352,7 @@
     transform: translateY(-5px);
 }
 
-/* =========================================
-   ANIMATIONS
-   ========================================= */
+/* ANIMATIONS */
 .fade-element {
     opacity: 0;
     transform: translateY(30px);
@@ -417,40 +364,33 @@
     transform: translateY(0);
 }
 
-/* --- DANS src/assets/css/about.css (tout en bas) --- */
+/* --- MEDIA QUERIES (RESPONSIVE) --- */
 @media (max-width: 900px) {
-    
     .about-container {
         padding: 20px;
         width: 100%;
-        overflow: hidden; /* Sécurité supplémentaire */
+        overflow: hidden; 
     }
-
-    /* On transforme la grille en colonne simple */
     .bento-grid {
         display: flex;
         flex-direction: column;
         gap: 30px;
     }
-
-    /* On force toutes les cartes à prendre toute la largeur */
     .bento-card {
         width: 100% !important;
         grid-column: auto !important;
         padding: 20px;
     }
-
-    /* Correction spécifique pour le bug du screen (Texte vs Icônes) */
-    .about-content, .skills-grid, .competences-grid {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+    .competences-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
-
-    /* Les icônes d'outils (HTML, React...) en plus petit */
     .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 icônes par ligne max */
         gap: 10px;
+    }
+    /* Sur mobile, on autorise les bulles à rétrécir un peu si besoin */
+    .soft-card {
+        width: 100%;
+        max-width: 210px;
     }
 }

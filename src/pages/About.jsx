@@ -4,9 +4,8 @@ import {
     Student, Briefcase, Code, PaintBrush, Globe, MagicWand, 
     VideoCamera, PenNib, Kanban, 
     Medal, Lightbulb, GearSix, Pen, Users, User, MagnifyingGlass, ClipboardText,
-    ArrowUp, DownloadSimple, LinkedinLogo, EnvelopeSimple, Heart 
+    ArrowUp, Heart 
 } from '@phosphor-icons/react';
-import monCvFile from '../assets/cvtharshica.pdf';
 
 export default function About() {
     
@@ -42,64 +41,27 @@ export default function About() {
     return (
         <div className={`about-container ${isLoaded ? 'loaded' : ''}`}>
             
-            <h1 className="about-title fade-element">Qui suis-je ?
-            </h1>
+            <h1 className="about-title fade-element">Qui suis-je ?</h1>
             
             <div className="bento-grid">
                 
-                {/* 1. BIO RAPIDE (Intro Factuelle) */}
-                <div className="bento-card card-bio fade-element" style={{ transitionDelay: '0.1s' }}>
-                    <div className="bio-content">
-                        <p className="bio-text">
-                           Je suis <span className="bio-highlight">Tharshica SIVA ANANDAN</span>. 
-                           Étudiante en BUT MMI, je navigue à l'intersection du design créatif et de la communication digitale.
-                           <br/><br/>
-                           Passionnée par le numérique, je cherche constamment de nouvelles inspirations pour donner vie à des idées innovantes.
-                        </p>
-                        
-                        <div className="bio-actions">
-                            <a 
-                                href={monCvFile}            
-                                target="_blank" 
-                                rel="noopener noreferrer"   
-                                className="btn-primary"
-                            >
-                                <DownloadSimple size={20} weight="bold" />
-                                <span>Mon CV</span>
-                            </a>
-
-                            <div className="social-links">
-                                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-btn" aria-label="LinkedIn">
-                                    <LinkedinLogo size={24} />
-                                </a>
-                                <a href="mailto:contact@tharshica.com" className="social-btn" aria-label="Email">
-                                    <EnvelopeSimple size={24} />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- 2. MON PARCOURS (Le Storytelling adapté) --- */}
-                <div className="bento-card card-story fade-element" style={{ transitionDelay: '0.15s', gridColumn: 'span 2' }}>
+                {/* --- 1. MON HISTOIRE --- */}
+                <div className="bento-card card-story fade-element" style={{ transitionDelay: '0.1s', gridColumn: 'span 2' }}>
                     <div className="card-header">
                         <div className="card-icon"><Heart size={20} weight="fill" color="#e87c7c" /></div>
                         <h2 className="bento-title">Mon histoire</h2>
                     </div>
                     <div className="story-content" style={{ padding: '0 10px' }}>
-                        
                         <p style={{ fontFamily: 'Sora', lineHeight: '1.6', color: '#104668', marginBottom: '15px', fontSize: '1rem' }}>
                             Immergée dans le numérique depuis toujours, j'ai grandi avec Internet, les réseaux sociaux et la culture web. Très vite, j'ai su que mon avenir se dessinerait dans ce vaste milieu.
                         </p>
-                        
                         <p style={{ fontFamily: 'Sora', lineHeight: '1.6', color: '#104668', fontSize: '1rem' }}>
                             Mais c'est en arrivant en <strong>BUT MMI</strong> que j'ai eu mon véritable déclic. J'ai compris que ma place n'était pas derrière des lignes de code, mais dans la <strong>création visuelle</strong>. Ce que j'aime, c'est traduire une idée complexe en une interface claire. Aujourd'hui, je mets cette sensibilité au service de l'utilisateur pour créer des projets qui ont du sens.
                         </p>
-                    
                     </div>
                 </div>
 
-                {/* 3. FORMATION */}
+                {/* --- 2. FORMATION --- */}
                 <div className="bento-card card-formation fade-element" style={{ transitionDelay: '0.2s' }}>
                     <div className="card-header">
                         <div className="card-icon"><Student size={20} /></div>
@@ -117,7 +79,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 4. EXPÉRIENCE */}
+                {/* --- 3. EXPÉRIENCE --- */}
                 <div className="bento-card card-experience fade-element" style={{ transitionDelay: '0.3s' }}>
                     <div className="card-header">
                         <div className="card-icon"><Briefcase size={20} /></div>
@@ -135,7 +97,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 5. COMPÉTENCES */}
+                {/* --- 4. COMPÉTENCES --- */}
                 <div className="bento-card card-competences fade-element" style={{ transitionDelay: '0.4s' }}>
                     <div className="card-header">
                         <div className="card-icon"><Medal size={20} /></div>
@@ -188,23 +150,26 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 6. BOÎTE À OUTILS */}
+                {/* --- 5. BOÎTE À OUTILS --- */}
                 <div className="bento-card card-tools fade-element" style={{ transitionDelay: '0.5s' }}>
                     <div className="card-header">
                         <div className="card-icon"><MagicWand size={20} /></div>
                         <h2 className="bento-title">Ma boîte à outils</h2>
                     </div>
                     
+                    {/* SECTION 1: Design & Audiovisuel */}
                     <h3 className="tools-category">🎨 Design & Audiovisuel</h3>
                     <div className="tools-grid">
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" className="tool-img" /><span className="tool-name">Figma</span></div>
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop" className="tool-img" /><span className="tool-name">Photoshop</span></div>
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator" className="tool-img" /><span className="tool-name">Illustrator</span></div>
-                        <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Adobe_InDesign_CC_icon.svg" alt="InDesign" className="tool-img" /><span className="tool-name">InDesign</span></div>
+                        <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Adobe_InDesign_CC_icon.svg" alt="InDesign" className="tool-img" /><span className="tool-name">InDesign</span></div>
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere" className="tool-img" /><span className="tool-name">Premiere</span></div>
-                        <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/DaVinci_Resolve_12_logo.png" alt="DaVinci" className="tool-img" /><span className="tool-name">DaVinci</span></div>
-                    </div>
+                        <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png" alt="DaVinci" className="tool-img" /><span className="tool-name">DaVinci</span></div>
+                    </div> 
+                    {/* ☝️ C'est ici qu'il manquait le </div> dans ton code ! */}
 
+                    {/* SECTION 2: Développement */}
                     <h3 className="tools-category">💻 Développement</h3>
                     <div className="tools-grid">
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML" className="tool-img" /><span className="tool-name">HTML</span></div>
@@ -217,6 +182,7 @@ export default function About() {
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg" alt="GitHub" className="tool-img" /><span className="tool-name">GitHub</span></div>
                     </div>
                     
+                    {/* SECTION 3: Gestion & CMS */}
                     <h3 className="tools-category">⚙️ Gestion & CMS</h3>
                     <div className="tools-grid">
                         <div className="tool-item"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Notion" className="tool-img" /><span className="tool-name">Notion</span></div>
@@ -225,7 +191,7 @@ export default function About() {
 
                 </div>
 
-                {/* 7. SOFT SKILLS */}
+                {/* 6. SOFT SKILLS */}
                 <div className="soft-skills-wrapper fade-element" style={{ transitionDelay: '0.6s' }}>
                     <h2 className="section-title-center">Soft-skills</h2>
                     

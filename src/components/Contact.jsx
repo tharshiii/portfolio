@@ -54,16 +54,28 @@ export default function Contact() {
                             <p>Je suis toujours ouverte aux nouveaux projets et opportunités créatives. Retrouvez-moi aussi sur mes réseaux professionnels.</p>
                             
                             <div className="info-list">
-                                {/* 1. EMAIL */}
-                                <a href="mailto:contact@tharshica.com" className="info-item">
-                                    <div className="icon-box"><EnvelopeSimple size={24} /></div>
-                                    {/* Remplace par ton vrai mail pro ou étudiant si besoin */}
-                                    <span>tharshica.s@gmail.com</span>
-                                </a>
+                             {/* 1. EMAIL */}
+                                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tharshica.s@gmail.com..." 
+                                 target="_blank" 
+                                 rel="noopener noreferrer" 
+                                 className="social-icon"
+                                    style={{ 
+                                      color: 'white', 
+                                      textDecoration: 'none', 
+                                      display: 'flex', 
+                                       alignItems: 'center', 
+                                          gap: '15px',          // Espace entre l'icône et le texte
+                                      }} 
+                              >       
+                             <div className="icon-box">
+                                <EnvelopeSimple size={24} />
+                             </div>
+                                 <span>tharshica.s@gmail.com</span>
+                                   </a>
 
                                 {/* 2. LINKEDIN (Remplace le téléphone) */}
                                 <a 
-                                    href="https://www.linkedin.com/in/TON-PROFIL/" 
+                                    href="https://www.linkedin.com/in/tharshica-siva-anandan-b97862358/" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     className="info-item"

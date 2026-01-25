@@ -2,11 +2,11 @@
 
 /* Définition locale des couleurs */
 :root {
-    --col-dark: #104668;       /* Titres, Texte fort */
-    --col-primary: #305F7D;    /* Boutons, Sous-titres */
-    --col-secondary: #5A99C2;  /* Accents, Bordures */
-    --col-soft: #99BCD3;       /* Ombres douces */
-    --col-light: #C8DDED;      /* Arrière-plans clairs */
+    --col-dark: #104668;       
+    --col-primary: #305F7D;    
+    --col-secondary: #5A99C2;  
+    --col-soft: #99BCD3;       
+    --col-light: #C8DDED;      
     --col-white: #ffffff;
 }
 
@@ -21,11 +21,8 @@
     align-items: flex-start; 
     justify-content: center;
     
-    /* --- RÉDUCTION DU VIDE ICI --- */
-    padding-top: 0px;      /* On laisse le body gérer le haut */
-    padding-bottom: 10px;  /* RÉDUIT : C'était 80px, ça remonte la suite */
-    /* --------------------------- */
-    
+    padding-top: 0px;      
+    padding-bottom: 10px;  
     padding-left: 20px;
     padding-right: 20px;
     
@@ -87,17 +84,19 @@
 /* --- GROUPE DE BOUTONS --- */
 .hero-buttons {
     display: flex;
-    gap: 16px; 
+    gap: 12px; 
     margin-top: 24px;
     flex-wrap: wrap; 
+    align-items: center; 
 }
 
+/* Bouton Principal */
 .hero-btn {
-    padding: 14px 28px;
+    padding: 10px 20px;       
+    font-size: 0.9rem;        
     background: var(--col-primary); 
     color: var(--col-white);
     font-family: "Sora", sans-serif;
-    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 99px;
@@ -115,12 +114,13 @@
     box-shadow: 0 5px 15px rgba(16, 70, 104, 0.2);
 }
 
+/* Bouton Secondaire */
 .secondary-btn {
-    padding: 14px 28px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
     background: transparent;
     color: var(--col-primary); 
     font-family: "Sora", sans-serif;
-    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 99px;
@@ -138,55 +138,74 @@
     color: var(--col-dark);
 }
 
-/* --- DESIGN "HIBISCUS DREAM" (Fleurs + Glow) --- */
+/* --- BOUTONS RÉSEAUX SOCIAUX --- */
+.social-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 8px; 
+}
 
+.social-btn {
+    width: 40px;       
+    height: 40px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--col-primary); 
+    color: var(--col-primary);            
+    background: transparent;   
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.social-btn:hover {
+    background-color: var(--col-primary); 
+    color: var(--col-white);              
+    transform: translateY(-3px);          
+    box-shadow: 0 4px 10px rgba(48, 95, 125, 0.2);
+}
+
+/* --- DESIGN "HIBISCUS DREAM" --- */
 .hero-image-wrapper {
     flex: 1;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* J'ai réduit le padding ici aussi pour éviter le vide inutile autour */
     padding: 20px; 
 }
 
-/* 1. LA LUMIÈRE DERRIÈRE (Le Glow) */
 .hero-image-wrapper::before {
     content: '';
     position: absolute;
     width: 90%;
     height: 90%;
-    background: linear-gradient(to bottom, var(--w-light-blue), var(--w-petrol));
+    background: linear-gradient(to bottom, var(--col-light), var(--col-secondary));
     filter: blur(60px); 
     opacity: 0.4;
     z-index: -1; 
     border-radius: 50%;
 }
 
-/* 2. LES FLEURS DÉCORATIVES */
 .flower-decoration {
     position: absolute;
     width: 140%; 
     max-width: 600px;
     height: auto;
     z-index: 0; 
-    
-    /* Masque anti-carré */
     -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
     mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
-    
     mix-blend-mode: multiply; 
     opacity: 0.8;
-    
-    /* Positionnement */
     top: -8%;
     right: -40%;
     transform: rotate(15deg); 
-    
     animation: floatFlowers 8s ease-in-out infinite alternate;
 }
 
-/* 3. TA PHOTO */
 .hero-image-wrapper .hero-img {
     position: relative;
     width: 100%;
@@ -195,22 +214,13 @@
     aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 20px;
-    
-    /* Z-INDEX SUPÉRIEUR */
     z-index: 2; 
-    
-    /* --- MODIFICATION ICI POUR BAISSER L'IMAGE --- */
-    /* On enlève le "top: -50px" qui la remontait */
-    margin-top: 80px; /* Ajuste ce chiffre (50px, 80px, 100px) pour descendre plus ou moins */
-    /* --------------------------------------------- */
-    
+    margin-top: 80px; 
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 20px 50px rgba(16, 70, 104, 0.2);
-    
     transition: transform 0.4s ease;
 }
 
-/* --- INTERACTIONS --- */
 .hero-image-wrapper:hover .flower-decoration {
     transform: rotate(20deg) scale(1.05); 
     opacity: 1;
@@ -225,45 +235,86 @@
     to { transform: translateY(-10px) rotate(18deg); }
 }
 
-
-/* --- RESPONSIVE MOBILE (À coller à la fin de home.css) --- */
+/* =========================================
+   RESPONSIVE MOBILE (La Magie Opère Ici)
+   ========================================= */
 @media (max-width: 900px) {
     
     .home-container {
-        flex-direction: column; /* Empile le texte et l'image */
-        padding-top: 80px; /* Espace pour le menu hamburger */
-        height: auto; /* Laisse la hauteur s'adapter */
+        flex-direction: column;
+        padding-top: 80px;
+        height: auto;
+        /* On réduit l'espace entre les éléments car ils sont empilés */
+        gap: 30px; 
+        align-items: center;
     }
 
-    /* Le bloc texte passe en premier */
+    /* 1. ON CASSE LE CONTENEUR TEXTE */
+    /* Cela permet aux enfants (Titre, Texte...) de se mélanger avec l'image */
     .hero-content {
-        width: 100%;
-        text-align: center; /* Centre le texte sur mobile */
-        padding: 20px;
-        order: 1; /* Texte en haut */
+        display: contents; 
     }
 
-    /* L'image passe en dessous */
+    /* 2. LE TITRE EN PREMIER (Nom + Prénom) */
+    .hero-title {
+        order: 1;
+        font-size: 3rem; /* Titre plus petit */
+        text-align: center;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    /* 3. L'IMAGE EN DEUXIÈME (Au milieu) */
     .hero-image-wrapper {
+        order: 2;
         width: 100%;
         justify-content: center;
-        margin-top: 30px;
-        margin-bottom: 50px;
-        order: 2; /* Image en bas */
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0; /* On retire le padding wrapper pour gagner de la place */
     }
 
     .hero-img {
-        width: 70%; /* Réduit un peu l'image */
-        max-width: 300px;
-    }
-
-    /* Centre les boutons */
-    .hero-buttons {
-        justify-content: center;
+        width: 60%; /* Image un peu plus petite sur mobile */
+        max-width: 280px;
+        margin-top: 0; /* Plus besoin de la descendre artificiellement */
     }
     
-    /* Réduit la taille du gros titre */
-    .hero-title {
-        font-size: 2.5rem;
+    .flower-decoration {
+        width: 100%; /* Ajustement fleur */
+        right: -20%;
+    }
+
+    /* 4. LE RESTE EN TROISIÈME (Sous-titre, Texte, Boutons) */
+    .hero-subtitle,
+    .hero-text,
+    .status-box,
+    .hero-buttons {
+        order: 3;
+        text-align: center;
+        /* On doit remettre un peu de largeur car 'contents' l'a enlevée */
+        width: 100%; 
+        max-width: 500px;
+    }
+
+    /* Ajustements esthétiques pour le texte en bas */
+    .hero-subtitle {
+        margin-top: 10px;
+    }
+    
+    .hero-text {
+        padding: 0 10px;
+    }
+
+    /* Centrage des boutons */
+    .hero-buttons {
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    /* Centrage des réseaux sociaux (annulation de la marge gauche) */
+    .social-links {
+        margin-left: 0;
     }
 }
