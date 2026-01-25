@@ -60,26 +60,27 @@ body {
     width: 100%;
     max-width: 100%; 
     
-    /* --- CONFIGURATION DU FOND (Desktop par défaut) --- */
+    /* Configuration du fond */
     background-color: var(--bg-main);
-    background-image: url("/img/fond.png"); /* Ton image Desktop */
-    
-    /* PARAMÈTRES POUR ÉVITER LA RÉPÉTITION */
-    background-attachment: fixed;   /* Le fond reste fixe au scroll */
-    background-size: cover;         /* Couvre tout l'écran */
-    background-position: center;    /* Centre l'image */
-    background-repeat: no-repeat;   /* Empêche le carrelage */
+    background-image: url("/img/fond.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     
     font-family: sans-serif;
     color: var(--text-main); 
     transition: background-color 0.3s ease, color 0.3s ease;
     
+    /* Configuration du curseur */
     cursor: none; 
+    
+    /* GESTION DU SCROLL & STICKY */
     position: relative; 
     overflow-x: clip;   
 }
 
-/* Cache le curseur sur les éléments cliquables */
+/* Cache le curseur sur les éléments cliquables aussi */
 a, button {
     cursor: none;
 }
@@ -101,6 +102,8 @@ a, button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    /* Padding par défaut (très large) */
     padding: 140px 20px 100px 20px;
 }
 
@@ -117,32 +120,52 @@ a, button {
 .status-badge {
     display: inline-block;
     width: fit-content;
+    
     background-color: rgba(16, 70, 104, 0.1);
     color: #104668;
     border: 1px solid rgba(16, 70, 104, 0.2);
+    
     padding: 10px 24px;
     font-size: 1rem;
     border-radius: 50px;
+    
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    
     margin-bottom: 25px;
 }
 
 /* =========================================
-   5. FOND SPÉCIFIQUE MOBILE (< 900px)
+   5. AJUSTEMENTS ESPACEMENTS (COMPLET)
+   ========================================= */
+
+/* --- 1. ENTRE ACCUEIL ET QUI SUIS-JE --- */
+
+/* On enlève l'espace en bas de l'accueil */
+#home {
+    padding-bottom: 135px !important; /* Au lieu de 100px */
+}
+
+
+/* Espace sous "Qui suis-je" */
+#about {
+    padding-bottom: 60px !important; 
+    padding-top: 100px !important;   
+}
+#works {
+    padding-top: 100px !important;    
+}
+
+/* =========================================
+   6. FOND MOBILE (Si tu l'utilises toujours)
    ========================================= */
 @media (max-width: 900px) {
     body {
-        /* On force le changement d'image avec !important */
-        background-image: url('/img/fondmobile.png') !important; 
-
-        /* On force les paramètres de taille et position */
+        background-image: url('/img/fondmobile.jpg') !important; 
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
-        
-        /* 'scroll' est mieux pour mobile */
         background-attachment: scroll !important; 
     }
 }
