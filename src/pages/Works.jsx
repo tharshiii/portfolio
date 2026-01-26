@@ -12,17 +12,18 @@ export default function Works() {
             id: 2,
             title: "Agence Immobilière",
             category: "UI/UX",
-            displayCategory: "UI/UX & BRANDING • 2025",
+            link: "https://www.figma.com/proto/TON_LIEN_ICI",
+            displayCategory: "UI/UX • 2025",
             description: "Conception d'interface et Design System pour l'immobilier.",
             fullDescription: `
                 <p class="modal-desc intro">
                     <strong>Conception Web & SEO (Mobile First).</strong><br>
-                    Dans le cadre d'un projet en duo réalisé sous Figma, l'objectif était de concevoir une interface utilisateur (UI) attractive pour une agence bretonne haut de gamme, en intégrant dès le design les contraintes du SEO 2025 (SXO).
+                    Dans le cadre d'un projet universitaire en duo réalisé sur Figma, l'objectif était de concevoir une interface utilisateur (UI) attractive pour une agence bretonne haut de gamme, en intégrant dès le design les contraintes du SEO 2025.
                 </p>
                 <h4 class="modal-section-title">RÉALISATIONS & DESIGN SYSTEM</h4>
                 <ul style="list-style-type: disc; padding-left: 20px; color: var(--w-petrol);">
                     <li style="margin-bottom: 12px;"><strong>Branding complet :</strong> Recherche de nom, conception du logo et définition d'une charte graphique élégante adaptée au marché local de luxe.</li>
-                    <li style="margin-bottom: 12px;"><strong>Conception Figma :</strong> Design d'une page d'accueil immersive (mise en avant de la réassurance) et d'une page "Lots" optimisée pour la conversion (filtres intuitifs, CTA clairs).</li>
+                    <li style="margin-bottom: 12px;"><strong>Conception Figma :</strong> Design d'une page d'accueil immersive (mise en avant de la réassurance) et d'une page de recherche de biens fluide, facilitant l'accès à l'offre et guidant intuitivement l'utilisateur vers la prise de rendez-vous.</li>
                     <li style="margin-bottom: 12px;"><strong>Industrialisation :</strong> Création d'un Design System atomique (boutons, cartes de biens, inputs) pour garantir la cohérence et faciliter le développement futur.</li>
                 </ul>
             `,
@@ -72,6 +73,7 @@ export default function Works() {
             id: 4,
             title: "EquiliBio",
             category: "COMMUNICATION",
+            link: "https://www.figma.com/proto/TON_LIEN_ICI",
             displayCategory: "MARKETING & STRATÉGIE",
             description: "Application étudiante : Manger mieux, polluer moins.",
             fullDescription: `
@@ -87,7 +89,7 @@ export default function Works() {
                 <ul style="list-style-type: disc; padding-left: 20px; color: var(--w-petrol);">
                     <li style="margin-bottom: 12px;"><strong>Étude de marché :</strong> Analyse concurrentielle (Yazio, LifeSum) et définition précise des personas étudiants pour identifier notre niche éco-responsable.</li>
                     <li style="margin-bottom: 12px;"><strong>Stratégie Marketing :</strong> Élaboration d'un plan de communication digital 360° (Campagnes réseaux sociaux, SEO, Partenariats) pour assurer l'acquisition utilisateurs.</li>
-                    <li style="margin-bottom: 12px;"><strong>Pilotage & Performance :</strong> Définition du budget prévisionnel et mise en place des KPIs pour mesurer le succès du lancement.</li>
+                    <li style="margin-bottom: 12px;"><strong> Gestion de projet :</strong> Estimation des coûts de développement et définition d'objectifs chiffrés (trafic, contacts) pour suivre la rentabilité du site.</li>
                 </ul>
             `,
             context: "Projet de groupe (Stratégie de lancement).",
@@ -119,7 +121,7 @@ export default function Works() {
                     <li style="margin-bottom: 12px;"><strong>Pré-production :</strong> Storyboard et découpage technique précis pour anticiper les interactions complexes entre le réel et le virtuel (timing, gestuelle).</li>
                     <li style="margin-bottom: 12px;"><strong>Tournage & DA :</strong> Gestion du cadrage (espace négatif pour les incrustations) et direction d'actrice pour synchroniser les mouvements avec les futures animations.</li>
                     <li style="margin-bottom: 12px;"><strong>Motion Design & Compositing :</strong> Création des assets (Illustrator) et animation complexe sur DaVinci Resolve (Tracking, Masques, Keyframing).</li>
-                    <li style="margin-bottom: 12px;"><strong>Sound Design :</strong> Montage rythmé et ajout de Sound FX pour donner du "poids" aux apparitions graphiques.</li>
+                    <li style="margin-bottom: 12px;"><strong>Sound Design :</strong> Montage rythmé et ajout de bruitages sonores pour renforcer l'impact des animations graphiques.</li>
                 </ul>
             `,
             context: "Projet Créatif (Format Reels/TikTok).",
@@ -172,6 +174,7 @@ export default function Works() {
             id: 7,
             title: "MonuTime",
             category: "COMMUNICATION",
+            link: "https://www.figma.com/proto/TON_LIEN_ICI",
             displayCategory: "STRATÉGIE DE MARQUE & AR • 2025",
             description: "Application de Réalité Augmentée pour le patrimoine.",
             fullDescription: `
@@ -194,7 +197,7 @@ export default function Works() {
             context: "Lancement de produit (Start-up/Innovation).",
             duration: "3 semaines",
             objectifs: "Acquisition de 100k utilisateurs.",
-            tags: ["Stratégie de Marque", "Réalité Augmentée", "Growth Marketing", "Storytelling"],
+            tags: ["Communication", "Réalité Augmentée", "Storytelling", "Social Media"],
             image: "/img/monu1.webp",
             images: [
                 "/img/monu1.webp",
@@ -204,7 +207,7 @@ export default function Works() {
             id: 8,
             title: "Sana terra",
             category: "WEB",
-            link: "https://bd-titeuf.jimdofree.com",
+            link: "https://sana-terra.netlify.app",
             displayCategory: "WORDPRESS & BRANDING • PROJET PERSONNEL",
             description: "Création de site vitrine de A à Z (Branding + Dev).",
             fullDescription: `
@@ -224,10 +227,79 @@ export default function Works() {
             context: "Projet personnel (Full Stack CMS).",
             duration: "En cours",
             objectifs: "Allier image zen & conversion.",
-            tags: ["WordPress", "SEO", "Branding", "Responsive"],
-            image: "/img/yoga-home.jpg",
+            tags: ["WordPress", "Design", "Branding", "Responsive"],
+            image: "/img/sanaterra1.png",
             images: [
-                "/img/yoga-home.jpg",
+                "/img/sanaterra1.png",
+                "/img/sanaterra2.png",
+                "/img/sanaterra3.png",
+            ]
+        },
+        {
+            id: 9, // Change l'ID si besoin (ex: 10)
+            title: "Mon Portfolio",
+            category: "WEB",
+            displayCategory: "REACT.JS & CREATIVE DEV • 2025",
+            description: "Conception et développement de mon identité numérique.",
+            fullDescription: `
+                <p class="modal-desc intro">
+                    <strong>Une vitrine technique et créative.</strong><br>
+                    Ce portfolio a été conçu comme un véritable projet "Full Stack" (Design + Code) pour démontrer ma capacité à transformer une identité visuelle forte en une interface web fluide, moderne et performante.
+                </p>
+                <p class="modal-desc">
+                    L'objectif était de sortir des templates classiques pour proposer une navigation immersive, reflétant ma personnalité : structurée mais douce, technique mais accessible.
+                </p>
+                <br>
+                <h4 class="modal-section-title">STACK TECHNIQUE & CHALLENGES</h4>
+                <ul style="list-style-type: disc; padding-left: 20px; color: var(--w-petrol);">
+                    <li style="margin-bottom: 12px;"><strong>Architecture React & Vite :</strong> Développement d'une SPA (Single Page Application) rapide et modulaire pour une expérience utilisateur fluide sans rechargement.</li>
+                    <li style="margin-bottom: 12px;"><strong>Design System "Sur-mesure" :</strong> Intégration CSS avancée (sans framework lourd) pour maîtriser chaque pixel, des animations subtiles aux ajustements responsive complexes (Mobile First).</li>
+                    <li style="margin-bottom: 12px;"><strong>Composants Intelligents :</strong> Création de composants réutilisables (Modales dynamiques, Sliders, Système de filtrage) pour un code propre et maintenable.</li>
+                    <li style="margin-bottom: 12px;"><strong>Direction Artistique :</strong> Travail sur l'ambiance "Aquarelle & Minimalisme" pour créer une identité mémorable tout en assurant une lisibilité optimale.</li>
+                </ul>
+            `,
+            context: "Projet Personnel (De A à Z).",
+            duration: "2 mois",
+            objectifs: "Démontrer mes compétences React & UI.",
+            tags: ["React.js", "CSS3", "UX/UI Design", "Vite"],
+            // Mets une capture d'écran de ta page d'accueil ici
+            image: "/img/portfolio-cover.jpg", 
+            images: [
+                "/img/portfolio-cover.jpg",
+                "/img/portfolio-mobile.jpg", // Optionnel : une vue mobile
+            ]
+        },
+        {
+            id: 10, // Pense à vérifier que cet ID n'est pas déjà pris
+            title: "Tamil Délices",
+            category: "COMMUNICATION", // Ou "GRAPHISME" si tu as ce filtre
+            displayCategory: "PRINT & MISE EN PAGE • 2024",
+            // Tu peux mettre le lien vers le PDF si tu l'héberges, sinon laisse vide
+            link: "", 
+            description: "Conception graphique et mise en page d'un menu de restaurant.",
+            fullDescription: `
+                <p class="modal-desc intro">
+                    <strong>Design Print & Identité Culinaire.</strong><br>
+                    L'objectif de ce projet était de concevoir le menu du restaurant "Tamil Délices", invitant au voyage sur "l'île aux mille épices". Le défi : organiser une grande quantité d'informations (plats, prix, descriptions, allergènes) tout en gardant une lecture fluide et appétissante.
+                </p>
+                <p class="modal-desc">
+                    J'ai travaillé sur une identité visuelle chaleureuse, rappelant les couleurs des épices (safran, ocre), intégrée dans une mise en page stricte réalisée sur InDesign pour un rendu professionnel prêt à l'impression.
+                </p>
+                <br>
+                <h4 class="modal-section-title">COMPÉTENCES INDESIGN & GRAPHIQUES</h4>
+                <ul style="list-style-type: disc; padding-left: 20px; color: var(--w-petrol);">
+                    <li style="margin-bottom: 12px;"><strong>Mise en page avancée :</strong> Utilisation de grilles modulaires pour aligner parfaitement les sections (Entrées, Plats, Desserts) et les prix.</li>
+                    <li style="margin-bottom: 12px;"><strong>Gestion typographique :</strong> Création de <em>Styles de Paragraphe</em> et de <em>Caractère</em> pour automatiser la mise en forme des titres de plats et des descriptions.</li>
+                    <li style="margin-bottom: 12px;"><strong>Identité Visuelle :</strong> Intégration de motifs vectoriels (Mandalas) et détourage photo pour sublimer les plats signatures comme le Parippu Curry.</li>
+                </ul>
+            `,
+            context: "Projet Académique (Print).",
+            duration: "1 semaine",
+            objectifs: "Hiérarchiser l'information & Séduire le client.",
+            tags: ["Adobe InDesign", "Print Design", "Mise en page", "Typographie"],
+            image:"/img/tamildelices.png",
+            images: [
+                "/img/tamildelices.png",
             ]
         },
     ];
